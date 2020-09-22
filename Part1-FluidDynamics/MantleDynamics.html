@@ -356,7 +356,14 @@
         
               <div>
                 
-  <div class="section" id="non-dimensional-equations-dimensionless-numbers">
+  <div class="math notranslate nohighlight">
+\[\newcommand{\dGamma}{\mathbf{d}\boldsymbol{\Gamma}}
+\DeclareMathOperator{\erfc}{erfc}
+\newcommand{\Red     }[1]{\textcolor[rgb]{0.7,0.0,0.0}{#1}} 
+\newcommand{\Green   }[1]{\textcolor[rgb]{0.0,0.7,0.0}{ #1}} 
+\newcommand{\Blue    }[1]{\textcolor[rgb]{0.0,0.0,0.7}{ #1}} 
+\newcommand{\Emerald }[1]{\textcolor[rgb]{0.0,0.7,0.3}{ #1}} \]</div>
+<div class="section" id="non-dimensional-equations-dimensionless-numbers">
 <h1>Non-dimensional equations &amp; dimensionless numbers<a class="headerlink" href="#non-dimensional-equations-dimensionless-numbers" title="Permalink to this headline">¶</a></h1>
 <p>Before too long it would be a good idea to get a feeling for the flavour
 of these equations which continual rearrangements will not do — it is
@@ -445,8 +452,8 @@ gives:</p>
                     \acute{\nabla}^2  \mathbf{v}'  -  \acute{\nabla} p' + {\rm Ra} T' \hat{\mathbf{z}}
 \end{aligned}
 \end{split}\]</div>
-<p><span class="math notranslate nohighlight">\(\rm Pr\)</span> is known as the Prandtl number, and <span class="math notranslate nohighlight">\(\rm Ra\)</span> is known as the
-Rayleigh number; both are non-dimensional numbers. By choosing to scale
+<p><span class="math notranslate nohighlight">\(\rm Pr\)</span> is known as the <strong>Prandtl</strong> number, and <span class="math notranslate nohighlight">\(\rm Ra\)</span> is known as the
+<strong>Rayleigh</strong> number; both are non-dimensional numbers. By choosing to scale
 the equations (and this is still perfectly general as we haven’t forced
 any particular choice of scaling yet), we have condensed the different
 physical variable quantities into just two numbers. The benefit of this
@@ -472,7 +479,7 @@ This can be counter-intuitive but the consequences are important when
 considering the dynamic response of the Earth to changes in, for
 example, plate configurations.</p>
 <p>Incidentally, a third, independent dimensionless number can be derived
-for the thermally driven flow equations. This is the Nusselt number</p>
+for the thermally driven flow equations. This is the <strong>Nusselt</strong> number</p>
 <div class="math notranslate nohighlight">
 \[ {\rm Nu} = \frac{Q}{k\Delta T} \]</div>
 <p>and is the ratio of actual heat transported by fluid motions in the
@@ -484,12 +491,78 @@ Prandtl number is a property of the fluid itself – typical values are:
 air, <span class="math notranslate nohighlight">\(\sim\)</span>1; water, <span class="math notranslate nohighlight">\(\sim\)</span> 6; non-conducting fluids <span class="math notranslate nohighlight">\(10^3\)</span> or more;
 liquid metal, <span class="math notranslate nohighlight">\(\sim\)</span>0.1. Rayleigh number and Nusselt number are both
 properties of the chosen geometry.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>If the acceleration term is negligible, this means we are ignoring the
+kinetic energy of the flow (forces are always in static equilibrium).</p>
+<p><strong>Estimate the kinetic energy of the Pacific Plate</strong> and compare this
+value to the average daily energy requirement of an adult human.</p>
+</div>
 <div class="section" id="does-the-earth-s-rotation-matter">
 <h2>Does the Earth’s rotation matter ?<a class="headerlink" href="#does-the-earth-s-rotation-matter" title="Permalink to this headline">¶</a></h2>
-<p>The effect of the Earth’s rotation is very strong in the Atmosphere, Oceans
-and in the outer Core where Coriolis effects induce rotational flows.
+<p>The effect of the Earth’s rotation is very strong in the atmosphere, oceans
+and in the outer core where Coriolis effects induce rotational flows.
 In slow-moving, high-viscosity fluids, the effect of rotation is likely to
 be smaller, but is it negligible like the inertial term ?</p>
+<p>To answer that question, we can look at the relative magnitudes of the
+accelerations in a rotating reference frame, <span class="math notranslate nohighlight">\(\{\hat{\mathbf{e}}_i\}\)</span> without having to transform
+the equations into that reference frame. The vectors are continually
+transformed by the rotation so that:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d \hat{\mathbf{e}}_i}{dt} = \boldsymbol{\omega} \times \hat{\mathbf{e}}_i
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{\omega}\)</span> is the angular velocity of Earth. Then a vector in the
+rotating reference frame <span class="math notranslate nohighlight">\(\mathbf{x} \equiv \left\{ x_i \hat{\mathbf{e}}_i \right\}\)</span>
+moves at</p>
+<div class="math notranslate nohighlight">
+\[
+    \left. \frac{d \mathbf{x}}{dt} \right|_0 =  \frac{d x_i}{d t} \hat{\mathbf{e}}_i + x_i \frac{d \hat{\mathbf{e}}_i}{dt}
+\]</div>
+<p>in the static reference frame. We can rewrite this as</p>
+<div class="math notranslate nohighlight">
+\[
+    \left. \frac{d \mathbf{x}}{dt} \right|_0 =  \mathbf{v}_R + \boldsymbol{\omega} \times \mathbf{x}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{v}_R\)</span> is the velocity of a point in the rotating reference frame. We can find the
+acceleration by a further time derivative and we find this:</p>
+<div class="math notranslate nohighlight">
+\[
+  \boldsymbol\gamma_0 = \left. \boldsymbol\gamma \right|_R + 2 \boldsymbol{\omega} \times \mathbf{v}_R + 
+                                          \boldsymbol{\omega} \times \left(  \boldsymbol{\omega} \times \mathbf{x} \right) +
+                                          \Red{\frac{d \boldsymbol{\omega}}{dt} \times   \mathbf{x}}
+\]</div>
+<p>These are the Coriolis, centrifugal and Poincar’e accelerations and the latter we will ignore by assuming changes in rotation
+are negligible in the case of the modern Earth.</p>
+<p>Now we only need to consider the relative magnitude of these terms by estimating characteristic scales. The ratio of the
+Coriolis term to the imposed gravitational acceleration is, for the Earth,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2 \omega U} {g} \approx 10^{-13}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(U\)</span> is a typical mantle flow or plate velocity (say 10 cm/yr). Gravitational forces
+only drive flow when density gradients are present, so a more reliable estimate of the
+relative magnitude in the case where density variations occur due to temperature would be</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2 \rho \omega U} {\rho \alpha \Delta T g} \approx 10^{-11}
+\]</div>
+<p>This might not be as dramatic a scale separation as for intertia, but it does suggest that the
+Coriolis term does not play a role in mantle dynamics for the Earth.</p>
+<p>The centrifugal acceleration term compared to the
+gravitational acceleration is</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\omega^2 R_\mathrm{Earth} } {g} \approx 3.10^{-3}
+\]</div>
+<p>which, is clearly not negligible in scale compared to the typical accelerations due to
+density variations within the Earth. However, this acceleration depends only on
+the distance from the rotation axis and not on the flow velocity. It is responsible
+for the equatorial bulge of the Earth which is, to first order, part of the hydrostatic
+balance that does not influence flow patterns.</p>
+<p>There are some more dimensionless numbers at work here. The <strong>Rossby</strong> number is the
+ratio of inertial forces to Coriolis forces, and the <strong>Eckman</strong> number is the ratio
+of the viscous forces to Coriolis forces.</p>
 </div>
 <div class="section" id="the-stream-function">
 <h2>The stream function<a class="headerlink" href="#the-stream-function" title="Permalink to this headline">¶</a></h2>
@@ -499,7 +572,7 @@ flow everywhere.
 The stream function is the scalar quantity,<span class="math notranslate nohighlight">\(\psi\)</span>, which satisfies</p>
 <div class="math notranslate nohighlight">
 \[
-    v_1 = -\frac{\partial \psi}{\partial x_2} \mbox{\hspace{1cm}}
+    v_1 = -\frac{\partial \psi}{\partial x_2} \mathrm{\hspace{1cm}}
                         v_2 = \frac{\partial \psi}{\partial x_1}
                     \label{eq:strmfn}
 \]</div>
