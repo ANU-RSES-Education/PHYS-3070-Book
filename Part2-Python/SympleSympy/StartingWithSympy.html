@@ -197,6 +197,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="#differentiation-integration">
+   Differentiation / Integration
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../SolveMathProblems/0-IntroductionToNumericalSolutions.html">
    Numerical models
   </a>
@@ -323,16 +328,6 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#simplification-and-subsitution">
    Simplification and Subsitution
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#differentiation-integration">
-   Differentiation / Integration
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example">
-   Example
   </a>
  </li>
 </ul>
@@ -494,9 +489,37 @@ unless we subsitute values for the symbols:</p>
 \[\displaystyle 2 \sqrt{2}\]</div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 2 \sqrt{2} i\]</div>
+</div>
+</div>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda3/envs/jupyter-book/lib/python3.7/site-packages/ipykernel_launcher.py:1: RuntimeWarning: invalid value encountered in sqrt
+  &quot;&quot;&quot;Entry point for launching an IPython kernel.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nan
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="differentiation-integration">
-<h2>Differentiation / Integration<a class="headerlink" href="#differentiation-integration" title="Permalink to this headline">¶</a></h2>
+<h1>Differentiation / Integration<a class="headerlink" href="#differentiation-integration" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ds</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -529,25 +552,6 @@ unless we subsitute values for the symbols:</p>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
 \[\displaystyle - \sqrt{2} + \sqrt{3}\]</div>
-</div>
-</div>
-</div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>Show that <span class="math notranslate nohighlight">\( s = s_0 \cos \omega t \)</span> is a solution of the equation of motion:</p>
-<div class="math notranslate nohighlight">
-\[ \frac{d^2 s}{dt^2} = -\frac{k}{m} s \]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>  <span class="n">S</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">S</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[\displaystyle \sqrt{x}\]</div>
-</div>
 </div>
 </div>
 </div>
