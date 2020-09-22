@@ -243,6 +243,21 @@
    Triangulations
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SympleSympy/StartingWithSympy.html">
+   Getting started with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     sympy
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SolveMathProblems/0-IntroductionToNumericalSolutions.html">
+   Numerical models
+  </a>
+ </li>
 </ul>
 
 </nav>
@@ -304,7 +319,7 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/Underworld-Geodynamics-Education/GeodynamicsJupyterBook"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/ANU-RSES-Education/PHYS-3070-Book"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         
@@ -325,14 +340,14 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/Underworld-Geodynamics-Education/GeodynamicsJupyterBook/2020?urlpath=tree/Part2-Python/Mapping/2-ImagesAndGeoTIFFs.md"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ANU-RSES-Education/PHYS-3070-Book/2020?urlpath=tree/Part2-Python/Mapping/2-ImagesAndGeoTIFFs.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
                     alt="Interact on binder">Binder</button></a>
         
         
-        <a class="jupyterhub-button" href="https://demon.underworldcloud.org/hub/user-redirect/git-pull?repo=https://github.com/Underworld-Geodynamics-Education/GeodynamicsJupyterBook&urlpath=tree/GeodynamicsJupyterBook/Part2-Python/Mapping/2-ImagesAndGeoTIFFs.md&branch=2020"><button type="button"
+        <a class="jupyterhub-button" href="https://phys3070.rses.geoscience.education//hub/user-redirect/git-pull?repo=https://github.com/ANU-RSES-Education/PHYS-3070-Book&urlpath=tree/PHYS-3070-Book/Part2-Python/Mapping/2-ImagesAndGeoTIFFs.md&branch=2020"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../../_static/images/logo_jupyterhub.svg"
@@ -419,7 +434,7 @@
 <h2>Projections<a class="headerlink" href="#projections" title="Permalink to this headline">¶</a></h2>
 <p>What if we want to use a different projection for the image. For example, we might want to use this as a background to plot some other information. How does this work ?</p>
 <p>Let’s try what we used before to plot with a different projection. Specifically, let’s try an orthographic projection which should wrap the image around a sphere and show us the disk from a particular orientation. Here is one I made earlier … the output should look like this:</p>
-<a class="reference internal image-reference" href="Part2-Python/Mapping/../../Data/Reference/OrthographicProjectionBlueMarble.png"><img alt="Part2-Python/Mapping/../../Data/Reference/OrthographicProjectionBlueMarble.png" src="Part2-Python/Mapping/../../Data/Reference/OrthographicProjectionBlueMarble.png" style="width: 30%;" /></a>
+<a class="reference internal image-reference" href="../../_images/OrthographicProjectionBlueMarble.png"><img alt="../../_images/OrthographicProjectionBlueMarble.png" src="../../_images/OrthographicProjectionBlueMarble.png" style="width: 30%;" /></a>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>

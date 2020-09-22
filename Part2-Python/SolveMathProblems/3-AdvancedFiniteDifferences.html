@@ -38,6 +38,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Finite difference operations" href="2-FiniteDifferences.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -158,7 +159,7 @@
   Python for Geoscientists
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../0-StartHere.html">
    Python for Earth Scientists
@@ -183,6 +184,43 @@
   <a class="reference internal" href="../SphericalMeshing/0-Stripy.html">
    Triangulations
   </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SympleSympy/StartingWithSympy.html">
+   Getting started with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     sympy
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="0-IntroductionToNumericalSolutions.html">
+   Numerical models
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="1-GroundwaterFlow-LectureNotes.html">
+     Partial Differential Equations of Groundwater Flow
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1-GroundwaterFlow-LectureNotes.html#finite-differences">
+     Finite Differences
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2-FiniteDifferences.html">
+     Finite difference operations
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Advanced finite difference
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -224,11 +262,14 @@
     
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/Part2-Python/SolveMathProblems/3-AdvancedFiniteDifferences.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+        <a class="dropdown-buttons"
+            href="../../_sources/Part2-Python/SolveMathProblems/3-AdvancedFiniteDifferences.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/Part2-Python/SolveMathProblems/3-AdvancedFiniteDifferences.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -242,7 +283,7 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/Underworld-Geodynamics-Education/GeodynamicsJupyterBook"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/ANU-RSES-Education/PHYS-3070-Book"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         
@@ -263,24 +304,19 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/Underworld-Geodynamics-Education/GeodynamicsJupyterBook/2020?urlpath=tree/Part2-Python/SolveMathProblems/3-AdvancedFiniteDifferences.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ANU-RSES-Education/PHYS-3070-Book/2020?urlpath=tree/Part2-Python/SolveMathProblems/3-AdvancedFiniteDifferences.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
                     alt="Interact on binder">Binder</button></a>
         
         
-        <a class="jupyterhub-button" href="https://demon.underworldcloud.org/hub/user-redirect/git-pull?repo=https://github.com/Underworld-Geodynamics-Education/GeodynamicsJupyterBook&urlpath=tree/GeodynamicsJupyterBook/Part2-Python/SolveMathProblems/3-AdvancedFiniteDifferences.ipynb&branch=2020"><button type="button"
+        <a class="jupyterhub-button" href="https://phys3070.rses.geoscience.education//hub/user-redirect/git-pull?repo=https://github.com/ANU-RSES-Education/PHYS-3070-Book&urlpath=tree/PHYS-3070-Book/Part2-Python/SolveMathProblems/3-AdvancedFiniteDifferences.md&branch=2020"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../../_static/images/logo_jupyterhub.svg"
                     alt="Interact on JupyterHub">JupyterHub</button></a>
         
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/Underworld-Geodynamics-Education/GeodynamicsJupyterBook/blob/2020/Part2-Python/SolveMathProblems/3-AdvancedFiniteDifferences.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
         
         
     </div>
@@ -320,9 +356,9 @@
 <p>This notebook assumes that you have completed the <em>finite difference operations</em> notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 </pre></div>
 </div>
 </div>
@@ -369,20 +405,15 @@ Your task will be to create a conductivity and heat production field, that vary 
 (You might want to give them distinct colourmaps to help distinguish them!)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">voxel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;voxel_data.npz&#39;</span><span class="p">)[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">voxel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;voxel_data.npz&#39;</span><span class="p">)[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
 <span class="n">voxel</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(260, 800)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 <span class="n">im1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">voxel</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Paired&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">28</span><span class="p">)</span>
@@ -391,9 +422,6 @@ Your task will be to create a conductivity and heat production field, that vary 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/3-AdvancedFiniteDifferences_6_0.png" src="../../_images/3-AdvancedFiniteDifferences_6_0.png" />
 </div>
 </div>
 <p>What we have is a 2D voxel model that was exported from GoCAD.
@@ -431,6 +459,7 @@ Pretty eh?</p>
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="2-FiniteDifferences.html" title="previous page">Finite difference operations</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

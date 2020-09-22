@@ -38,6 +38,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Partial Differential Equations of Groundwater Flow" href="1-GroundwaterFlow-LectureNotes.html" />
+    <link rel="prev" title="Getting started with sympy" href="../SympleSympy/StartingWithSympy.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -158,7 +160,7 @@
   Python for Geoscientists
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../0-StartHere.html">
    Python for Earth Scientists
@@ -183,6 +185,43 @@
   <a class="reference internal" href="../SphericalMeshing/0-Stripy.html">
    Triangulations
   </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SympleSympy/StartingWithSympy.html">
+   Getting started with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     sympy
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Numerical models
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1-GroundwaterFlow-LectureNotes.html">
+     Partial Differential Equations of Groundwater Flow
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1-GroundwaterFlow-LectureNotes.html#finite-differences">
+     Finite Differences
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2-FiniteDifferences.html">
+     Finite difference operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3-AdvancedFiniteDifferences.html">
+     Advanced finite difference
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -224,11 +263,14 @@
     
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/Part2-Python/SolveMathProblems/0-IntroductionToNumericalSolutions.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+        <a class="dropdown-buttons"
+            href="../../_sources/Part2-Python/SolveMathProblems/0-IntroductionToNumericalSolutions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/Part2-Python/SolveMathProblems/0-IntroductionToNumericalSolutions.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -242,7 +284,7 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/Underworld-Geodynamics-Education/GeodynamicsJupyterBook"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/ANU-RSES-Education/PHYS-3070-Book"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         
@@ -263,24 +305,19 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/Underworld-Geodynamics-Education/GeodynamicsJupyterBook/2020?urlpath=tree/Part2-Python/SolveMathProblems/0-IntroductionToNumericalSolutions.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ANU-RSES-Education/PHYS-3070-Book/2020?urlpath=tree/Part2-Python/SolveMathProblems/0-IntroductionToNumericalSolutions.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
                     alt="Interact on binder">Binder</button></a>
         
         
-        <a class="jupyterhub-button" href="https://demon.underworldcloud.org/hub/user-redirect/git-pull?repo=https://github.com/Underworld-Geodynamics-Education/GeodynamicsJupyterBook&urlpath=tree/GeodynamicsJupyterBook/Part2-Python/SolveMathProblems/0-IntroductionToNumericalSolutions.ipynb&branch=2020"><button type="button"
+        <a class="jupyterhub-button" href="https://phys3070.rses.geoscience.education//hub/user-redirect/git-pull?repo=https://github.com/ANU-RSES-Education/PHYS-3070-Book&urlpath=tree/PHYS-3070-Book/Part2-Python/SolveMathProblems/0-IntroductionToNumericalSolutions.md&branch=2020"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../../_static/images/logo_jupyterhub.svg"
                     alt="Interact on JupyterHub">JupyterHub</button></a>
         
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/Underworld-Geodynamics-Education/GeodynamicsJupyterBook/blob/2020/Part2-Python/SolveMathProblems/0-IntroductionToNumericalSolutions.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
         
         
     </div>
@@ -341,7 +378,7 @@ case we interpret \( \theta \) as the excess temperature (above room temperature
 <a class="reference internal image-reference" href="../../_images/theta_t1.png"><img alt="../../_images/theta_t1.png" src="../../_images/theta_t1.png" style="width: 66%;" /></a>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pylab</span> inline
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">pylab</span> <span class="n">inline</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -358,12 +395,6 @@ case we interpret \( \theta \) as the excess temperature (above room temperature
 <span class="k">pass</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Populating the interactive namespace from numpy and matplotlib
-</pre></div>
-</div>
-<img alt="../../_images/0-IntroductionToNumericalSolutions_1_1.png" src="../../_images/0-IntroductionToNumericalSolutions_1_1.png" />
 </div>
 </div>
 <p>We want to be able to march forward in time from our starting point
@@ -411,7 +442,7 @@ accurate it is. First we consider whether we can improve the accuracy of the
 approximation by doing a bit more work.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">steps</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">steps</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">theta_0</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="n">const_k</span> <span class="o">=</span> <span class="mf">10.0</span>
 <span class="n">delta_t</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">steps</span>
@@ -434,12 +465,6 @@ approximation by doing a bit more work.</p>
 <span class="n">plot</span><span class="p">(</span><span class="n">time_values</span><span class="p">,</span> <span class="n">theta_values</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1122b0400&gt;]
-</pre></div>
-</div>
-<img alt="../../_images/0-IntroductionToNumericalSolutions_3_1.png" src="../../_images/0-IntroductionToNumericalSolutions_3_1.png" />
 </div>
 </div>
 </div>
@@ -483,7 +508,7 @@ $<span class="math notranslate nohighlight">\(
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">steps</span> <span class="o">=</span> <span class="mi">100</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">steps</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">theta_0</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="n">const_k</span> <span class="o">=</span> <span class="mf">10.0</span>
 <span class="n">delta_t</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">steps</span>
@@ -507,12 +532,6 @@ $<span class="math notranslate nohighlight">\(
 <span class="n">plot</span><span class="p">(</span><span class="n">time_values</span><span class="p">,</span> <span class="n">theta_values</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x112207828&gt;]
-</pre></div>
-</div>
-<img alt="../../_images/0-IntroductionToNumericalSolutions_5_1.png" src="../../_images/0-IntroductionToNumericalSolutions_5_1.png" />
 </div>
 </div>
 <p>The results are more accurate when a smaller timestep is used although it
@@ -561,7 +580,7 @@ $<span class="math notranslate nohighlight">\(
 <p>The Runge Kutta method can be extended by repeating the estimates on smaller regions of the interval. The usual choice is fourth order RK. This is largely because, obviously, it’s accurate to fourth order, but also because the number of operations to go higher than fourth order is disproportionately large. See Numerical Recipes for a discussion on this and better methods for ODE’s.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">steps</span> <span class="o">=</span> <span class="mi">100</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">steps</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">theta_0</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="n">const_k</span> <span class="o">=</span> <span class="mf">10.0</span>
 <span class="n">delta_t</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">steps</span>
@@ -585,12 +604,8 @@ $<span class="math notranslate nohighlight">\(
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1122dd7f0&gt;]
-</pre></div>
 </div>
-<img alt="../../_images/0-IntroductionToNumericalSolutions_8_1.png" src="../../_images/0-IntroductionToNumericalSolutions_8_1.png" />
-</div>
+<div class="toctree-wrapper compound">
 </div>
 </div>
 </div>
@@ -623,6 +638,8 @@ $<span class="math notranslate nohighlight">\(
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="../SympleSympy/StartingWithSympy.html" title="previous page">Getting started with <code class="docutils literal notranslate"><span class="pre">sympy</span></code></a>
+    <a class='right-next' id="next-link" href="1-GroundwaterFlow-LectureNotes.html" title="next page">Partial Differential Equations of Groundwater Flow</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
