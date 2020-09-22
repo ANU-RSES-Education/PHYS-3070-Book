@@ -305,6 +305,16 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-comparison-of-the-two-schemes">
+     A comparison of the two schemes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#second-order-runge-kutta">
+     Second Order Runge-Kutta
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#our-first-code">
      Our First Code
     </a>
@@ -420,82 +430,157 @@ the sample points:</p>
 <p>Which we can solve to give this:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} 
- 
     \begin{split}
             \beta &amp;= \left( 4 \theta_n - \theta_{n+1} - 3\theta_{n-1} \right) \frac{1}{2\Delta t} \\
             \gamma &amp;= \left( \theta_{n+1} + \theta_{n-1} -2 \theta_n \right) \frac{1}{2\Delta t^2} 
     \end{split}
- 
 \end{split}\]</div>
 <p>By substituting into \( (\ref{eq:dthdt2}) \), and then into the original differential equation \( (\ref{eq:ode_decay}) \) we obtain the following</p>
 <div class="math notranslate nohighlight">
 \[        
             \left. \frac{d\theta}{dt} \right|_{t=n\Delta t} = \beta + 2\gamma \Delta t =
                 \frac{1}{2\Delta t} \left( \theta_{n+1} - \theta_{n-1} \right)  = -k \theta_n 
+\]</div>
+<p>The difference approximation to the derivative turns out to be the average of the expressions for the previous derivative and the new derivative. We have now included information about the current timestep and the previous timestep in our expression for the value of <span class="math notranslate nohighlight">\(\theta\)</span> at the forthcoming timestep:</p>
+<div class="math notranslate nohighlight">
+\[ 
+         \theta_{n+1} = \theta_{n-1} -2k \theta_n \Delta t
+\]</div>
+</div>
+<div class="section" id="a-comparison-of-the-two-schemes">
+<h3>A comparison of the two schemes<a class="headerlink" href="#a-comparison-of-the-two-schemes" title="Permalink to this headline">¶</a></h3>
+<p>How well do these two methods perform, and what difference does the choice of <span class="math notranslate nohighlight">\(\Delta t\)</span> make on the accuracy ?</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>t</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(^1\theta_H\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(^1\theta_h\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(^2\theta_H\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(^2\theta_h\)</span></p></th>
+<th class="head"><p>Exact</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>1.0000</p></td>
+<td><p>1.0000</p></td>
+<td><p>1.0000</p></td>
+<td><p>1.0000</p></td>
+<td><p>1.0000</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.1</p></td>
+<td><p>—</p></td>
+<td><p>0.9000</p></td>
+<td><p>—</p></td>
+<td><p>0.9000</p></td>
+<td><p>0.9048</p></td>
+</tr>
+<tr class="row-even"><td><p>0.2</p></td>
+<td><p>0.8000</p></td>
+<td><p>0.8100</p></td>
+<td><p>0.8000</p></td>
+<td><p>0.8200</p></td>
+<td><p>0.8187</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.3</p></td>
+<td><p>—</p></td>
+<td><p>0.7290</p></td>
+<td><p>—</p></td>
+<td><p>0.7360</p></td>
+<td><p>0.7408</p></td>
+</tr>
+<tr class="row-even"><td><p>0.4</p></td>
+<td><p>0.6400</p></td>
+<td><p>0.6561</p></td>
+<td><p>0.6800</p></td>
+<td><p>0.6728</p></td>
+<td><p>0.6703</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.5</p></td>
+<td><p>—</p></td>
+<td><p>0.5905</p></td>
+<td><p>—</p></td>
+<td><p>0.6014</p></td>
+<td><p>0.6063</p></td>
+</tr>
+<tr class="row-even"><td><p>0.6</p></td>
+<td><p>0.5120</p></td>
+<td><p>0.5314</p></td>
+<td><p>0.5280</p></td>
+<td><p>0.5525</p></td>
+<td><p>0.5488</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.7</p></td>
+<td><p>—</p></td>
+<td><p>0.4783</p></td>
+<td><p>—</p></td>
+<td><p>0.4909</p></td>
+<td><p>0.4966</p></td>
+</tr>
+<tr class="row-even"><td><p>0.8</p></td>
+<td><p>0.4096</p></td>
+<td><p>0.4305</p></td>
+<td><p>0.4688</p></td>
+<td><p>0.4543</p></td>
+<td><p>0.4483</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.9</p></td>
+<td><p>—</p></td>
+<td><p>0.3874</p></td>
+<td><p>—</p></td>
+<td><p>0.4001</p></td>
+<td><p>0.4066</p></td>
+</tr>
+<tr class="row-even"><td><p>1.0</p></td>
+<td><p>0.3277</p></td>
+<td><p>0.3487</p></td>
+<td><p>0.3405</p></td>
+<td><p>0.3743</p></td>
+<td><p>0.3679</p></td>
+</tr>
+</tbody>
+</table>
+<p>Results of the numerical simulation of the decay equation. <span class="math notranslate nohighlight">\(^1\theta_H\)</span> is from the first order expansion of <span class="math notranslate nohighlight">\(\theta(t)\)</span>, at a timestep of <span class="math notranslate nohighlight">\(\Delta t=0.2\)</span>, and <span class="math notranslate nohighlight">\(^2\theta_H\)</span> is the second order expansion at <span class="math notranslate nohighlight">\(\Delta t=0.2\)</span>; other calculations are at <span class="math notranslate nohighlight">\(\Delta t = 0.1\)</span>. <span class="math notranslate nohighlight">\(^1\theta_h\)</span> is the linear expansion,  <span class="math notranslate nohighlight">\(^2\theta_h\)</span> results from the quadratic expansion of <span class="math notranslate nohighlight">\(\theta(t)\)</span>. The actual solution is also shown.</p>
+<p>The results are more accurate when a smaller timestep is used although it requires more computation to achieve the greater accuracy. Higher order expansion also increases the accuracy and may be more efficient in terms of the number of computations required for a given level of accuracy. Note, however, that the supposedly better quadratic expansion produces an error which oscillates as time increases. Does this error grow ? Does this make second order expansions useless ?</p>
+</div>
+<div class="section" id="second-order-runge-kutta">
+<h3>Second Order Runge-Kutta<a class="headerlink" href="#second-order-runge-kutta" title="Permalink to this headline">¶</a></h3>
+<p><img alt=" different way to derive a second order method" src="Part3-NumericalMethods/./Diagrams/theta_rk2-.png" /></p>
+<p>The Runge-Kutta approach to higher order integration methods is <a class="reference external" href="#rk2">illustrated in the figure</a>. The idea is to estimate the gradient <span class="math notranslate nohighlight">\(d \theta / d t\)</span> at the half way point between two timestep values.  This is done in two stages. Initially a first order estimate, <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> is made for the value of the function <span class="math notranslate nohighlight">\(\theta\)</span> at <span class="math notranslate nohighlight">\(t=t+\Delta t /2\)</span> in the future. This value is then subsituted into the differential equation to obtain the estimate for the gradient at this time. The revised gradient is then used to update the original <span class="math notranslate nohighlight">\(\theta(t)\)</span> by an entire timestep.</p>
+<p>The first order step is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+    \begin{split}
+        \hat{\theta}(t+\Delta t /2) &amp; = \theta(t) + \left.  \frac{d \theta}{d t} \right|_t \frac{\Delta t}{2} \\
+            &amp;= \theta(t) \left[ 1-\frac{k\Delta t}{2} \right]
+    \end{split}
+\end{split}\]</div>
+<p>Substitute to estimate the gradient at the mid-point</p>
+<div class="math notranslate nohighlight">
+\[ 
+     \left. \frac{d \theta}{d t} \right|_{t+\Delta t /2} \approx -k \theta(t)  \left[ 1-\frac{k\Delta t}{2} \right]
+\]</div>
+<p>Use this value as the average gradient over the interval <span class="math notranslate nohighlight">\(t\rightarrow t+\Delta t\)</span> to
+update <span class="math notranslate nohighlight">\(\theta\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+    \begin{split}
+        \theta(t+\Delta t) &amp; \approx \theta(t) + \delta t \left(  -k \theta(t)  \left[ 1-\frac{k\Delta t}{2} \right]  \right) \\
+            &amp; \approx \theta(t) \left( 1 - k \Delta t + k^2 \frac{\Delta t^2}{2} \right)
+    \end{split}
  
-\]</div>
-<p>The difference approximation to the derivative turns out to be the average of the expressions for the previous derivative and the new derivative. We have now included information about the current timestep and the previous timestep in our expression for the value of <span class="math notranslate nohighlight">\(\theta\)</span> at the forthcoming timestep:
-$$</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>     \theta_{n+1} = \theta_{n-1} -2k \theta_n \Delta t
-</pre></div>
-</div>
+\end{split}\]</div>
+<p>It’s worth noting that the Taylor expansion of the solution should look like</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}### A comparison of the two schemes\\How well do these two methods perform, and what difference does the choice of $\Delta t$ make on the accuracy ?\\
-|   t   | $^1\theta_H$ | $^1\theta_h$ | $^2\theta_H$  | $^2\theta_h$   | Exact    |
-| ----- |--------------| ------------ | --------------| -------------- | ---------|
-|   0.0 |   1.0000     | 1.0000       | 1.0000        | 1.0000         | 1.0000   |
-|   0.1 |   ---        | 0.9000       | ---           | 0.9000         | 0.9048   |
-|   0.2 |   0.8000     | 0.8100       | 0.8000        | 0.8200         | 0.8187   |
-|   0.3 |   ---        | 0.7290       | ---           | 0.7360         | 0.7408   |
-|   0.4 |   0.6400     | 0.6561       | 0.6800        | 0.6728         | 0.6703   |
-|   0.5 |   ---        | 0.5905       | ---           | 0.6014         | 0.6063   |
-|   0.6 |   0.5120     | 0.5314       | 0.5280        | 0.5525         | 0.5488   |
-|   0.7 |   ---        | 0.4783       | ---           | 0.4909         | 0.4966   |
-|   0.8 |   0.4096     | 0.4305       | 0.4688        | 0.4543         | 0.4483   |
-|   0.9 |   ---        | 0.3874       | ---           | 0.4001         | 0.4066   |
-|   1.0 |   0.3277     | 0.3487       | 0.3405        | 0.3743         | 0.3679   |
-[Results of the numerical simulation of the decay equation. $^1\theta_H$ is from the first order expansion of $\theta(t)$, at a timestep of $\Delta t=0.2$, and $^2\theta_H$ is the second order expansion at $\Delta t=0.2$; other calculations are at $\Delta t = 0.1$. $^1\theta_h$ is the linear expansion,  $^2\theta_h$ results from the quadratic expansion of $\theta(t)$. The actual solution is also shown.][table-two-schemes]\\The results are more accurate when a smaller timestep is used although it requires more computation to achieve the greater accuracy. Higher order expansion also increases the accuracy and may be more efficient in terms of the number of computations required for a given level of accuracy. Note, however, that the supposedly better quadratic expansion produces an error which oscillates as time increases. Does this error grow ? Does this make second order expansions useless ?\\
-### Second Order Runge-Kutta\\![ different way to derive a second order method][rk2]\\[rk2]: ./Diagrams/theta_rk2-.png\\
-The Runge-Kutta approach to higher order integration methods is [illustrated in the figure](#rk2). The idea is to estimate the gradient $d \theta / d t$ at the half way point between two timestep values.  This is done in two stages. Initially a first order estimate, $\hat{\theta}$ is made for the value of the function $\theta$ at $t=t+\Delta t /2$ in the future. This value is then subsituted into the differential equation to obtain the estimate for the gradient at this time. The revised gradient is then used to update the original $\theta(t)$ by an entire timestep.\\The first order step is
-\end{aligned}\end{align} \]</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\begin{split}
-    \hat{\theta}(t+\Delta t /2) &amp; = \theta(t) + \left.  \frac{d \theta}{d t} \right|_t \frac{\Delta t}{2} \\
-        &amp;= \theta(t) \left[ 1-\frac{k\Delta t}{2} \right]
-\end{split}
-</pre></div>
-</div>
-<div class="math notranslate nohighlight">
-\[
-Substitute to estimate the gradient at the mid-point
+\[ 
+    e^{-kt} = 1 - kt + \frac{k^2 t^2}{2!} - \frac{k^3 t^3}{3!} + \ldots
 \]</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> \left. \frac{d \theta}{d t} \right|_{t+\Delta t /2} \approx -k \theta(t)  \left[ 1-\frac{k\Delta t}{2} \right]
-</pre></div>
-</div>
-<div class="math notranslate nohighlight">
-\[
-Use this value as the average gradient over the interval $t\rightarrow t+\Delta t$ to
-update $\theta$
-\]</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\begin{split}
-    \theta(t+\Delta t) &amp; \approx \theta(t) + \delta t \left(  -k \theta(t)  \left[ 1-\frac{k\Delta t}{2} \right]  \right) \\
-        &amp; \approx \theta(t) \left( 1 - k \Delta t + k^2 \frac{\Delta t^2}{2} \right)
-\end{split}
-</pre></div>
-</div>
-<div class="math notranslate nohighlight">
-\[
-It's worth noting that the Taylor expansion of the solution should look like
-\]</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>e^{-kt} = 1 - kt + \frac{k^2 t^2}{2!} - \frac{k^3 t^3}{3!} + \ldots
-</pre></div>
-</div>
-<p>$$</p>
 <p>The Runge Kutta method can be extended by repeating the estimates on smaller regions of the interval. The usual choice is fourth order RK. This is largely because, obviously, it’s accurate to fourth order, but also because the number of operations to go higher than fourth order is disproportionately large. See Numerical Recipes for a discussion on this and better methods for ODE’s.</p>
 </div>
 <div class="section" id="our-first-code">
 <h3>Our First Code<a class="headerlink" href="#our-first-code" title="Permalink to this headline">¶</a></h3>
 <p>The simplest way to answer our earlier question is to code the methods and see. The following is a script which computes the first and second order expressions and the Runge-Kutta method, and compares with the “exact” solution (which is numerical as well, of course, but computed through series expansions and the like).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare various ways to integrate the </span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare various ways to integrate the </span>
 <span class="c1"># ODE for radioactive decay / Newton&#39;s law of cooling.</span>
 <span class="c1"># Assume decay constant of 1.0</span>
 
