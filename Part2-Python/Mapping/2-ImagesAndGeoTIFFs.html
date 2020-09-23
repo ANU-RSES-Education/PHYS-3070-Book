@@ -38,8 +38,6 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Australian magnetic intensity" href="3-WorkingWithRealData.html" />
-    <link rel="prev" title="Cartopy" href="1-IntroductingCartopy.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -170,7 +168,7 @@
   Python for Geoscientists
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../0-StartHere.html">
    Python for Earth Scientists
@@ -185,68 +183,6 @@
   <a class="reference internal" href="../Plotting/1-IntroductionToMatplotlib.html">
    Introduction to matplotlib
   </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="reference internal" href="00-Maps_with_Cartopy.html">
-   Maps with the Cartopy Package
-  </a>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="0-Preliminaries.html">
-     Datasets
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="1-IntroductingCartopy.html">
-     Cartopy
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Handling images
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="3-WorkingWithRealData.html">
-     Australian magnetic intensity
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="4-ContouringGlobalData.html">
-     How to use contours to view global data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="5-WorkingWithPointData.html">
-     Point Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="6-WorkingWithShuttleRadarTopography.html">
-     Cartopy and the Shuttle Radar Topography Map data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="7-WorkingWithOn-DemandMappingServices.html">
-     On demand mapping services
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="8-GlobalPlateMotionsEtc.html">
-     Global Plate Motions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="9-HimalayaRegionMapsAndImages.html">
-     Himalaya Maps (1)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="9a-HimalayaRegionMapsAndImages-Pt2.html">
-     Himalaya Maps (2)
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../SphericalMeshing/0-Stripy.html">
@@ -415,7 +351,14 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">globalmarble</span>      <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;../../Data/Resources/BlueMarbleNG-TB_2004-06-01_rgb_3600x1800.TIFF&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!ls Resources/
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">globalmarble</span>      <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;Resources/BlueMarbleNG-TB_2004-12-01_rgb_3600x1800.TIFF&quot;</span><span class="p">)</span>
 <span class="n">globalmarble_img</span>  <span class="o">=</span> <span class="n">globalmarble</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># Note that we convert the gdal object into an image array - and also have to re-organise the data </span>
@@ -480,12 +423,12 @@
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">base_projection</span>   <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span> 
 
-<span class="n">globalmag</span>         <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;../../Data/Resources/EMAG2_image_V2.tif&quot;</span><span class="p">)</span>
+<span class="n">globalmag</span>         <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;Resources/EMAG2_image_V2_no_compr.tif&quot;</span><span class="p">)</span>
 <span class="n">globalmag_img</span>     <span class="o">=</span> <span class="n">globalmag</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">globalmag_img_s</span>   <span class="o">=</span> <span class="n">globalmag_img</span><span class="p">[::</span><span class="mi">2</span><span class="p">,::</span><span class="mi">2</span><span class="p">,::]</span>
 <span class="k">del</span><span class="p">(</span><span class="n">globalmag</span><span class="p">)</span>
 
-<span class="n">globaletopo</span>       <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;../../Data/Resources/color_etopo1_ice_low.tif&quot;</span><span class="p">)</span>
+<span class="n">globaletopo</span>       <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;Resources/color_etopo1_ice_low.tif&quot;</span><span class="p">)</span>
 <span class="n">globaletopo_img</span>   <span class="o">=</span> <span class="n">globaletopo</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="k">del</span><span class="p">(</span><span class="n">globaletopo</span><span class="p">)</span>
 </pre></div>
@@ -552,8 +495,6 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="1-IntroductingCartopy.html" title="previous page">Cartopy</a>
-    <a class='right-next' id="next-link" href="3-WorkingWithRealData.html" title="next page">Australian magnetic intensity</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

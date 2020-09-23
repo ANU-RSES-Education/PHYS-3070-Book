@@ -38,8 +38,6 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Cartopy and the Shuttle Radar Topography Map data" href="6-WorkingWithShuttleRadarTopography.html" />
-    <link rel="prev" title="How to use contours to view global data" href="4-ContouringGlobalData.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -170,7 +168,7 @@
   Python for Geoscientists
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../0-StartHere.html">
    Python for Earth Scientists
@@ -185,68 +183,6 @@
   <a class="reference internal" href="../Plotting/1-IntroductionToMatplotlib.html">
    Introduction to matplotlib
   </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="reference internal" href="00-Maps_with_Cartopy.html">
-   Maps with the Cartopy Package
-  </a>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="0-Preliminaries.html">
-     Datasets
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="1-IntroductingCartopy.html">
-     Cartopy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="2-ImagesAndGeoTIFFs.html">
-     Handling images
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="3-WorkingWithRealData.html">
-     Australian magnetic intensity
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="4-ContouringGlobalData.html">
-     How to use contours to view global data
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Point Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="6-WorkingWithShuttleRadarTopography.html">
-     Cartopy and the Shuttle Radar Topography Map data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="7-WorkingWithOn-DemandMappingServices.html">
-     On demand mapping services
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="8-GlobalPlateMotionsEtc.html">
-     Global Plate Motions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="9-HimalayaRegionMapsAndImages.html">
-     Himalaya Maps (1)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="9a-HimalayaRegionMapsAndImages-Pt2.html">
-     Himalaya Maps (2)
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../SphericalMeshing/0-Stripy.html">
@@ -410,7 +346,7 @@
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
-<span class="kn">import</span> <span class="nn">imageio</span> 
+<span class="kn">import</span> <span class="nn">gdal</span> 
 </pre></div>
 </div>
 </div>
@@ -419,13 +355,13 @@
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">base_projection</span>     <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span> 
 <span class="n">global_extent</span>     <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">180.0</span><span class="p">,</span> <span class="mf">180.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">90.0</span><span class="p">,</span> <span class="mf">90.0</span><span class="p">]</span>
-<span class="n">globalmag</span>         <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;../../Data/Resources/EMAG2_image_V2.tif&quot;</span><span class="p">)</span>
+<span class="n">globalmag</span>         <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;Resources/EMAG2_image_V2_no_compr.tif&quot;</span><span class="p">)</span>
 <span class="n">globalmag_img</span>     <span class="o">=</span> <span class="n">globalmag</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">globalmarble</span>      <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;../../Data/Resources/BlueMarbleNG-TB_2004-06-01_rgb_3600x1800.TIFF&quot;</span><span class="p">)</span>
+<span class="n">globalmarble</span>      <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;Resources/BlueMarbleNG-TB_2004-12-01_rgb_3600x1800.TIFF&quot;</span><span class="p">)</span>
 <span class="n">globalmarble_img</span>  <span class="o">=</span> <span class="n">globalmarble</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">globaletopo</span>       <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;../../Data/Resources/color_etopo1_ice_low.tif&quot;</span><span class="p">)</span>
+<span class="n">globaletopo</span>       <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;Resources/color_etopo1_ice_low.tif&quot;</span><span class="p">)</span>
 <span class="n">globaletopo_img</span>   <span class="o">=</span> <span class="n">globaletopo</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">globaletopobw</span>       <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;../../Data/Resources/etopo1_grayscale_hillshade.tif&quot;</span><span class="p">)</span>
+<span class="n">globaletopobw</span>       <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;Resources/etopo1_grayscale_hillshade.tif&quot;</span><span class="p">)</span>
 <span class="n">globaletopobw_img</span>   <span class="o">=</span> <span class="n">globaletopobw</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()[::</span><span class="mi">3</span><span class="p">,::</span><span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="mf">256.0</span>
 </pre></div>
 </div>
@@ -462,7 +398,7 @@
 
 <span class="c1"># 1 Global</span>
 
-<span class="n">earthquakes_datafile</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../Data/Resources/Earthquakes-2000-2014-5.5+.json&#39;</span><span class="p">)</span>
+<span class="n">earthquakes_datafile</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;Resources/EQs/Earthquakes-2000-2014-5.5+.json&#39;</span><span class="p">)</span>
 <span class="n">earthquakes_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">earthquakes_datafile</span><span class="p">)</span>
 <span class="n">earthquakes_datafile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="n">earthquakes</span> <span class="o">=</span> <span class="n">earthquakes_data</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">]</span>
@@ -484,7 +420,7 @@
     
 <span class="c1"># 2 Australian</span>
 
-<span class="n">earthquakes_datafile</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../Data/Resources/Earthquakes-AusRegion-2000-2014-4.8-5.5+.json&#39;</span><span class="p">)</span>
+<span class="n">earthquakes_datafile</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;Resources/EQs/Earthquakes-AusRegion-2000-2014-4.8-5.5+.json&#39;</span><span class="p">)</span>
 <span class="n">earthquakes_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">earthquakes_datafile</span><span class="p">)</span>
 <span class="n">earthquakes_datafile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="n">earthquakes</span> <span class="o">=</span> <span class="n">earthquakes_data</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">]</span>
@@ -505,14 +441,14 @@
 
 <span class="c1">#3 Japanese - Earthquakes-JapanRegion-2009-2014-4.5+.json</span>
 
-<span class="n">earthquakes_datafile</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../Data/Resources/Earthquakes-JapanRegion-2009-2014-4.5+.json&#39;</span><span class="p">)</span>
+<span class="n">earthquakes_datafile</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;Resources/EQs/Earthquakes-JapanRegion-2009-2014-4.5+.json&#39;</span><span class="p">)</span>
 <span class="n">earthquakes_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">earthquakes_datafile</span><span class="p">)</span>
 <span class="n">earthquakes_datafile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="n">earthquakes</span> <span class="o">=</span> <span class="n">earthquakes_data</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">]</span>
 
 <span class="c1">#3+ South of 30 degrees: Earthquakes-IBMRegion-1990-2014-3+.json</span>
 
-<span class="n">earthquakes_datafile</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../Data/Resources/Earthquakes-IBMRegion-1990-2014-3+.json&#39;</span><span class="p">)</span>
+<span class="n">earthquakes_datafile</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;Resources/EQs/Earthquakes-IBMRegion-1990-2014-3+.json&#39;</span><span class="p">)</span>
 <span class="n">earthquakes_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">earthquakes_datafile</span><span class="p">)</span>
 <span class="n">earthquakes_datafile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
@@ -537,7 +473,7 @@
 <span class="c1">#4 Yakutat EQ</span>
 
 
-<span class="n">earthquakes_datafile</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../Data/Resources/Earthquakes-YakutatRegion-1990-2014-3+.json&#39;</span><span class="p">)</span>
+<span class="n">earthquakes_datafile</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;Resources/EQs/Earthquakes-YakutatRegion-1990-2014-3+.json&#39;</span><span class="p">)</span>
 <span class="n">earthquakes_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">earthquakes_datafile</span><span class="p">)</span>
 <span class="n">earthquakes_datafile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="n">earthquakes</span> <span class="o">=</span> <span class="n">earthquakes_data</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">]</span>
@@ -555,7 +491,7 @@
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Yakutat Region depth range:     &quot;</span><span class="p">,</span> <span class="n">yakqdep</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="s2">&quot; - &quot;</span><span class="p">,</span> <span class="n">yakqdep</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Yakutat Region magnitude range: &quot;</span><span class="p">,</span> <span class="n">yakqmag</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="s2">&quot; - &quot;</span><span class="p">,</span> <span class="n">yakqmag</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 
-<span class="n">earthquakes_datafile</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../Data/Resources/Earthquakes-MeditRegion-1990-2014-3+.json&#39;</span><span class="p">)</span>
+<span class="n">earthquakes_datafile</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;Resources/EQs/Earthquakes-MeditRegion-1990-2014-3+.json&#39;</span><span class="p">)</span>
 <span class="n">earthquakes_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">earthquakes_datafile</span><span class="p">)</span>
 <span class="n">earthquakes_datafile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="n">earthquakes</span> <span class="o">=</span> <span class="n">earthquakes_data</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">]</span>
@@ -594,7 +530,7 @@
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">globaletopobw_img</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">base_projection</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">global_extent</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">itqlon</span><span class="p">,</span> <span class="n">itqlat</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">itqdep</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">jet_r</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm_eqdep</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
-            <span class="n">s</span><span class="o">=</span><span class="p">(</span><span class="n">itqmag</span><span class="o">-</span><span class="mf">3.0</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">(),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.333</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">s</span><span class="o">=</span><span class="p">(</span><span class="n">itqmag</span><span class="o">-</span><span class="mf">3.0</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.333</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -619,7 +555,7 @@
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">globaletopobw_img</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">base_projection</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">global_extent</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">itqlon</span><span class="p">,</span> <span class="n">itqlat</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">itqdep</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">jet_r</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm_eqdep</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
-            <span class="n">s</span><span class="o">=</span><span class="p">(</span><span class="n">itqmag</span><span class="o">-</span><span class="mf">3.0</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">(),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.333</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">s</span><span class="o">=</span><span class="p">(</span><span class="n">itqmag</span><span class="o">-</span><span class="mf">3.0</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.333</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
 
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;ItaliaEq.png&quot;</span><span class="p">)</span>
@@ -636,7 +572,7 @@
 <span class="n">datasize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1801</span><span class="p">,</span> <span class="mi">3601</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">age_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">datasize</span><span class="p">)</span>
 
-<span class="n">ages</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;../../Data/Resources/global_age_data.3.6.z.npz&quot;</span><span class="p">)[</span><span class="s2">&quot;ageData&quot;</span><span class="p">]</span>
+<span class="n">ages</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;Resources/global_age_data.3.6.z.npz&quot;</span><span class="p">)[</span><span class="s2">&quot;ageData&quot;</span><span class="p">]</span>
 
 <span class="n">lats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="n">datasize</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">lons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">180.0</span><span class="p">,</span><span class="mf">180.0</span><span class="p">,</span> <span class="n">datasize</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -678,10 +614,9 @@
 
 
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">eqlon</span><span class="p">,</span> <span class="n">eqlat</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">eqdep</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">jet_r</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm_eqdep</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span> 
-            <span class="n">s</span><span class="o">=</span><span class="p">(</span><span class="n">eqmag</span><span class="o">-</span><span class="mf">5.5</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">(),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">s</span><span class="o">=</span><span class="p">(</span><span class="n">eqmag</span><span class="o">-</span><span class="mf">5.5</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;GlobalAgeMapEq.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">pad_inches</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
-
 
 </pre></div>
 </div>
@@ -704,7 +639,7 @@
 
 
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ausqlon</span><span class="p">,</span> <span class="n">ausqlat</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">ausqdep</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">jet_r</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm_eqdep</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
-            <span class="n">s</span><span class="o">=</span><span class="p">(</span><span class="n">ausqmag</span><span class="o">-</span><span class="mf">4.0</span><span class="p">)</span><span class="o">*</span><span class="mi">25</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">(),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="n">s</span><span class="o">=</span><span class="p">(</span><span class="n">ausqmag</span><span class="o">-</span><span class="mf">4.0</span><span class="p">)</span><span class="o">*</span><span class="mi">25</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -774,7 +709,6 @@
 <span class="n">ax</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;coral&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">())</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
 </pre></div>
 </div>
 </div>
@@ -810,8 +744,6 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="4-ContouringGlobalData.html" title="previous page">How to use contours to view global data</a>
-    <a class='right-next' id="next-link" href="6-WorkingWithShuttleRadarTopography.html" title="next page">Cartopy and the Shuttle Radar Topography Map data</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

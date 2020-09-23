@@ -38,8 +38,6 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Himalaya Maps (1)" href="9-HimalayaRegionMapsAndImages.html" />
-    <link rel="prev" title="On demand mapping services" href="7-WorkingWithOn-DemandMappingServices.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -170,7 +168,7 @@
   Python for Geoscientists
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../0-StartHere.html">
    Python for Earth Scientists
@@ -185,68 +183,6 @@
   <a class="reference internal" href="../Plotting/1-IntroductionToMatplotlib.html">
    Introduction to matplotlib
   </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="reference internal" href="00-Maps_with_Cartopy.html">
-   Maps with the Cartopy Package
-  </a>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="0-Preliminaries.html">
-     Datasets
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="1-IntroductingCartopy.html">
-     Cartopy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="2-ImagesAndGeoTIFFs.html">
-     Handling images
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="3-WorkingWithRealData.html">
-     Australian magnetic intensity
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="4-ContouringGlobalData.html">
-     How to use contours to view global data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="5-WorkingWithPointData.html">
-     Point Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="6-WorkingWithShuttleRadarTopography.html">
-     Cartopy and the Shuttle Radar Topography Map data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="7-WorkingWithOn-DemandMappingServices.html">
-     On demand mapping services
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Global Plate Motions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="9-HimalayaRegionMapsAndImages.html">
-     Himalaya Maps (1)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="9a-HimalayaRegionMapsAndImages-Pt2.html">
-     Himalaya Maps (2)
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../SphericalMeshing/0-Stripy.html">
@@ -397,17 +333,6 @@
 <p>The image is composed of a background grayscale topography / bathymetry map, plate motion vectors (in a Europe-fixed frame) and contours of the observed strain rate second invariant. These data are available after running <span class="xref myst">Notebook 0</span> to download / install everything.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sh</span>
-
-<span class="c1"># This will run notebook 0 to download all the required data for this example. </span>
-
-<span class="n">runipy</span> <span class="s1">&#39;0 - Preliminaries.ipynb&#39;</span> <span class="o">--</span><span class="n">quiet</span> 
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">pylab</span> <span class="n">inline</span>
 
 <span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
@@ -450,7 +375,7 @@
 <span class="n">global_extent</span>     <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">180.0</span><span class="p">,</span> <span class="mf">180.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">90.0</span><span class="p">,</span> <span class="mf">90.0</span><span class="p">]</span>
 
 <span class="n">strainrate_extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="o">-</span><span class="mi">68</span><span class="p">,</span><span class="mi">80</span><span class="p">]</span>
-<span class="n">strainrate</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;../../Data/Resources/sec_invariant_strain_0.2.dat&quot;</span><span class="p">)</span>
+<span class="n">strainrate</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Resources/sec_invariant_strain_0.2.dat&quot;</span><span class="p">)</span>
 <span class="n">strainrate_data</span> <span class="o">=</span> <span class="n">strainrate</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">741</span><span class="p">,</span><span class="mi">1800</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># I had to look at the data to work this out !</span>
 <span class="c1"># strainrate_img  = strainrate_data[:,:,2] # Not actually used here !</span>
 </pre></div>
@@ -464,7 +389,7 @@
 
 <span class="c1"># Etopo Height field as geotiff</span>
 
-<span class="n">etopoH</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;../../Data/Resources/ETOPO1_Ice_c_geotiff.tif&quot;</span><span class="p">)</span> 
+<span class="n">etopoH</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;Resources/ETOPO1_Ice_c_geotiff.tif&quot;</span><span class="p">)</span> 
 <span class="n">etopoH_img</span> <span class="o">=</span> <span class="n">etopoH</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()[::</span><span class="mi">2</span><span class="p">,::</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">float16</span><span class="p">)</span>
 <span class="k">del</span><span class="p">(</span><span class="n">etopoH</span><span class="p">)</span>
 
@@ -527,7 +452,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Reading the velocity vector data from the EU-fixed dataset</span>
 
-<span class="n">rootgrp</span> <span class="o">=</span> <span class="n">netcdf</span><span class="o">.</span><span class="n">netcdf_file</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;../../Data/Reference/velocity_NNR.nc&quot;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">rootgrp</span> <span class="o">=</span> <span class="n">netcdf</span><span class="o">.</span><span class="n">netcdf_file</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;Resources/velocity_NNR.nc&quot;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">ve</span> <span class="o">=</span> <span class="n">rootgrp</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;ve&quot;</span><span class="p">]</span>
 <span class="n">vn</span> <span class="o">=</span> <span class="n">rootgrp</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;vn&quot;</span><span class="p">]</span>
@@ -602,11 +527,11 @@
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## This was an alternative to the background image which I thought might look good:</span>
 
-<span class="n">globalrelief</span>      <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;../../Data/Resources/HYP_50M_SR_W/HYP_50M_SR_W.tif&quot;</span><span class="p">)</span>
+<span class="n">globalrelief</span>      <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;Resources/HYP_50M_SR_W/HYP_50M_SR_W.tif&quot;</span><span class="p">)</span>
 <span class="n">globalrelief_img</span>  <span class="o">=</span> <span class="n">globalrelief</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="k">del</span><span class="p">(</span><span class="n">globalrelief</span><span class="p">)</span>
 
-<span class="n">globalbathym</span>      <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;../../Data/Resources/OB_50M/OB_50M.tif&quot;</span><span class="p">)</span>
+<span class="n">globalbathym</span>      <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;Resources/OB_50M/OB_50M.tif&quot;</span><span class="p">)</span>
 <span class="n">globalbathym_img</span>  <span class="o">=</span> <span class="n">globalbathym</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="k">del</span><span class="p">(</span><span class="n">globalbathym</span><span class="p">)</span>
 
@@ -710,8 +635,6 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="7-WorkingWithOn-DemandMappingServices.html" title="previous page">On demand mapping services</a>
-    <a class='right-next' id="next-link" href="9-HimalayaRegionMapsAndImages.html" title="next page">Himalaya Maps (1)</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
