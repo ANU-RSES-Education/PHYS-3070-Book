@@ -15,8 +15,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/spanels-index--0afa1ebdab0bb23b98b56d34c23d9f57.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/spanels-variables--ffc7f74dcb1b9eecba2dbcbc22818714.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
@@ -88,6 +88,16 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../Part0-Introduction/Introduction.html">
    Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Part0-Introduction/PlateTectonics.html">
+   Plate tectonics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Part0-Introduction/Observations%2BPlanets.html">
+   Observations
   </a>
  </li>
 </ul>
@@ -503,6 +513,7 @@ kinetic energy of the flow is small (forces are always in static equilibrium).</
 <p><strong>Estimate the kinetic energy of the Pacific Plate</strong> and compare this
 value to the average daily energy requirement of an adult human. Also compare this
 to the heat lost by the Earth in a day.</p>
+<p>Does this mean that you could eat an extra-large breakfast and then stop plate tectonics ?</p>
 </div>
 <div class="section" id="does-the-earth-s-rotation-matter">
 <h2>Does the Earth’s rotation matter ?<a class="headerlink" href="#does-the-earth-s-rotation-matter" title="Permalink to this headline">¶</a></h2>
@@ -534,14 +545,13 @@ moves at</p>
 acceleration by a further time derivative and we find this:</p>
 <div class="math notranslate nohighlight">
 \[
-  \boldsymbol\gamma_0 = \left. \boldsymbol\gamma \right|_R + 2 \boldsymbol{\omega} \times \mathbf{v}_R + 
+  \boldsymbol\gamma_0 =  \boldsymbol\gamma_R + 2 \boldsymbol{\omega} \times \mathbf{v}_R + 
                                           \boldsymbol{\omega} \times \left(  \boldsymbol{\omega} \times \mathbf{x} \right) +
                                           \Red{\frac{d \boldsymbol{\omega}}{dt} \times   \mathbf{x}}
 \]</div>
 <p>These are the Coriolis, centrifugal and Poincar’e accelerations and the latter we will ignore by assuming changes in rotation
 are negligible in the case of the modern Earth.</p>
-<p>Now we only need to consider the relative magnitude of these terms by estimating characteristic scales. The ratio of the
-Coriolis term to the imposed gravitational acceleration is, for the Earth,</p>
+<p>Now we only need to consider the relative magnitude of these terms by estimating characteristic scales. The ratio of the Coriolis term to the imposed gravitational acceleration is, for the Earth,</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{2 \omega U} {g} \approx 10^{-13}
