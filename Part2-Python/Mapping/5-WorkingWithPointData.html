@@ -38,6 +38,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Cartopy and the Shuttle Radar Topography Map data" href="6-WorkingWithShuttleRadarTopography.html" />
+    <link rel="prev" title="How to use contours to view global data" href="4-ContouringGlobalData.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -88,16 +90,6 @@
    Introduction
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../Part0-Introduction/PlateTectonics.html">
-   Plate tectonics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../Part0-Introduction/Observations%2BPlanets.html">
-   Observations
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -105,6 +97,11 @@
  </span>
 </p>
 <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Part1-FluidDynamics/0-StartHere.html">
+   Content
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../Part1-FluidDynamics/ContinuumMechanics.html">
    Conservation Laws
@@ -138,6 +135,11 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
+  <a class="reference internal" href="../../Part3-NumericalMethods/0-StartHere.html">
+   Content
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../Part3-NumericalMethods/NumericalMethods1.html">
    Numerical Modeling in Solid Earth Dynamics
   </a>
@@ -168,10 +170,15 @@
   Python for Geoscientists
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../0-StartHere.html">
-   Python for Earth Scientists
+   Content
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Introduction2Python/1-IntroductionToJupyterNotebooks.html">
+   Jupyter Notebooks
   </a>
  </li>
  <li class="toctree-l1">
@@ -183,6 +190,68 @@
   <a class="reference internal" href="../Plotting/1-IntroductionToMatplotlib.html">
    Introduction to matplotlib
   </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="0-Maps_with_Cartopy.html">
+   Maps with the Cartopy Package
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="0-Preliminaries.html">
+     Datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1-IntroductingCartopy.html">
+     Cartopy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2-ImagesAndGeoTIFFs.html">
+     Handling images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3-WorkingWithRealData.html">
+     Australian magnetic intensity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4-ContouringGlobalData.html">
+     How to use contours to view global data
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Point Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6-WorkingWithShuttleRadarTopography.html">
+     Cartopy and the Shuttle Radar Topography Map data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7-WorkingWithOn-DemandMappingServices.html">
+     On demand mapping services
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="8-GlobalPlateMotionsEtc.html">
+     Global Plate Motions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9-HimalayaRegionMapsAndImages.html">
+     Himalaya Maps (1)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9a-HimalayaRegionMapsAndImages-Pt2.html">
+     Himalaya Maps (2)
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../SphericalMeshing/0-Stripy.html">
@@ -290,12 +359,6 @@
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/ANU-RSES-Education/PHYS-3070-Book/2020?urlpath=tree/Part2-Python/Mapping/5-WorkingWithPointData.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
         
         
         <a class="jupyterhub-button" href="https://phys3070.rses.geoscience.education/hub/user-redirect/git-pull?repo=https://github.com/ANU-RSES-Education/PHYS-3070-Book&urlpath=tree/PHYS-3070-Book/Part2-Python/Mapping/5-WorkingWithPointData.md&branch=2020"><button type="button"
@@ -744,6 +807,8 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="4-ContouringGlobalData.html" title="previous page">How to use contours to view global data</a>
+    <a class='right-next' id="next-link" href="6-WorkingWithShuttleRadarTopography.html" title="next page">Cartopy and the Shuttle Radar Topography Map data</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

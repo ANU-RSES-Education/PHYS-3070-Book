@@ -39,7 +39,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Survey of numerical methods" href="NumericalMethods2.html" />
-    <link rel="prev" title="Dynamics of the Lithosphere" href="../Part1-FluidDynamics/LithosphericDynamics.html" />
+    <link rel="prev" title="Content" href="0-StartHere.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -90,16 +90,6 @@
    Introduction
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Part0-Introduction/PlateTectonics.html">
-   Plate tectonics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Part0-Introduction/Observations%2BPlanets.html">
-   Observations
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -107,6 +97,11 @@
  </span>
 </p>
 <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Part1-FluidDynamics/0-StartHere.html">
+   Content
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Part1-FluidDynamics/ContinuumMechanics.html">
    Conservation Laws
@@ -139,6 +134,11 @@
  </span>
 </p>
 <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="0-StartHere.html">
+   Content
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Numerical Modeling in Solid Earth Dynamics
@@ -173,7 +173,12 @@
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../Part2-Python/0-StartHere.html">
-   Python for Earth Scientists
+   Content
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Part2-Python/Introduction2Python/1-IntroductionToJupyterNotebooks.html">
+   Jupyter Notebooks
   </a>
  </li>
  <li class="toctree-l1">
@@ -184,6 +189,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../Part2-Python/Plotting/1-IntroductionToMatplotlib.html">
    Introduction to matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Part2-Python/Mapping/0-Maps_with_Cartopy.html">
+   Maps with the Cartopy Package
   </a>
  </li>
  <li class="toctree-l1">
@@ -555,7 +565,7 @@ the sample points:</p>
 </div>
 <div class="section" id="second-order-runge-kutta">
 <h3>Second Order Runge-Kutta<a class="headerlink" href="#second-order-runge-kutta" title="Permalink to this headline">¶</a></h3>
-<p><img alt=" different way to derive a second order method" src="Part3-NumericalMethods/./Diagrams/theta_rk2-.png" /></p>
+<p><img alt=" different way to derive a second order method" src="../_images/theta_rk2.png" /></p>
 <p>The Runge-Kutta approach to higher order integration methods is <a class="reference external" href="#rk2">illustrated in the figure</a>. The idea is to estimate the gradient <span class="math notranslate nohighlight">\(d \theta / d t\)</span> at the half way point between two timestep values.  This is done in two stages. Initially a first order estimate, <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> is made for the value of the function <span class="math notranslate nohighlight">\(\theta\)</span> at <span class="math notranslate nohighlight">\(t=t+\Delta t /2\)</span> in the future. This value is then subsituted into the differential equation to obtain the estimate for the gradient at this time. The revised gradient is then used to update the original <span class="math notranslate nohighlight">\(\theta(t)\)</span> by an entire timestep.</p>
 <p>The first order step is</p>
 <div class="math notranslate nohighlight">
@@ -713,7 +723,7 @@ update <span class="math notranslate nohighlight">\(\theta\)</span></p>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../Part1-FluidDynamics/LithosphericDynamics.html" title="previous page">Dynamics of the Lithosphere</a>
+    <a class='left-prev' id="prev-link" href="0-StartHere.html" title="previous page">Content</a>
     <a class='right-next' id="next-link" href="NumericalMethods2.html" title="next page">Survey of numerical methods</a>
 
     </div>
