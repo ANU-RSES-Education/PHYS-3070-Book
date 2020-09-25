@@ -701,9 +701,27 @@ Other projections to try include <code class="docutils literal notranslate"><spa
 <h3><code class="docutils literal notranslate"><span class="pre">Lavavu</span></code> to view spherical information<a class="headerlink" href="#lavavu-to-view-spherical-information" title="Permalink to this headline">¶</a></h3>
 <p>We can view the same triangulation in an interactive form using the <code class="docutils literal notranslate"><span class="pre">lavavu</span></code> package (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">lavavu</span></code>).
 The list of simplices of the triangulation (<code class="docutils literal notranslate"><span class="pre">spherical_triangulation.simplices</span></code>) is compatible with the format expected by Lavavu.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## This can be an issue on jupyterhub</span>
+
+<span class="kn">from</span> <span class="nn">xvfbwrapper</span> <span class="kn">import</span> <span class="n">Xvfb</span>
+<span class="n">vdisplay</span> <span class="o">=</span> <span class="n">Xvfb</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">vdisplay</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">xvfb</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">xvfb</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lavavu</span>
+
+
 
 <span class="n">lv</span> <span class="o">=</span> <span class="n">lavavu</span><span class="o">.</span><span class="n">Viewer</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="p">[</span><span class="mi">666</span><span class="p">,</span><span class="mi">666</span><span class="p">],</span> <span class="n">background</span><span class="o">=</span><span class="s2">&quot;#FFFFFF&quot;</span><span class="p">)</span>
 <span class="n">lv</span><span class="p">[</span><span class="s2">&quot;axis&quot;</span><span class="p">]</span><span class="o">=</span><span class="kc">False</span>
@@ -737,13 +755,8 @@ The list of simplices of the triangulation (<code class="docutils literal notran
 
 <span class="n">lv</span><span class="o">.</span><span class="n">hide</span><span class="p">(</span><span class="s2">&quot;fine&quot;</span><span class="p">)</span>
 <span class="n">lv</span><span class="o">.</span><span class="n">hide</span><span class="p">(</span><span class="s2">&quot;finew&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lv</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">Panel</span><span class="p">()</span>
+
+<span class="n">lv</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">Panel</span><span class="p">()</span>
 <span class="n">lv</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="s2">&quot;hide triangles; hide points; show ghost; show fine_nodes; show coarse; show coarsew; show coarse_nodes; redraw&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Coarse&quot;</span><span class="p">)</span>
 <span class="n">lv</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="s2">&quot;hide triangles; hide points; show ghost; show coarse_nodes; show fine; show finew; show fine_nodes; redraw&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Fine&quot;</span><span class="p">)</span>
 
@@ -763,6 +776,13 @@ The list of simplices of the triangulation (<code class="docutils literal notran
 </pre></div>
 </div>
 <p>This capability is shown in a companion notebook <a class="reference internal" href="Ex2-SphericalGrids.html"><span class="doc std std-doc">Ex2-SphericalGrids</span></a></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vdisplay</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 

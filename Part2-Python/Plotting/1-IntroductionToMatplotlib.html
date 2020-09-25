@@ -336,7 +336,7 @@
 <h1>Introduction to matplotlib<a class="headerlink" href="#introduction-to-matplotlib" title="Permalink to this headline">¶</a></h1>
 <p>So far we have seen some of the built in <code class="docutils literal notranslate"><span class="pre">pylab</span></code> code in notebooks for making plots.</p>
 <p>A more general interface is available and a more structured approach to using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> is helpful.</p>
-<!-->   - [PDF documentation](../../Documentation/Matplotlib-user-2.0.0.pdf) -->
+<!--   - [PDF documentation](../../Documentation/Matplotlib-user-2.0.0.pdf) -->
 <ul class="simple">
 <li><p><a class="reference external" href="http://matplotlib.org/gallery.html">Online gallery / cookbook</a></p></li>
 </ul>
@@ -360,14 +360,18 @@
 <span class="c1"># ...</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;test-figure.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># happens anyway !</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  
 </pre></div>
 </div>
 </div>
 </div>
 <hr class="docutils" />
-<p>A good way to look at the rendered image is to open it up in a markdown cell - or look in the file browser.</p>
-<p><img alt="test-figure.png" src="Part2-Python/Plotting/test-figure.png" /></p>
+<p>A good way to look at the rendered image is to open it up in a markdown cell - or look in the file browser.
+This is the markdown you need to view an image file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>![test-figure.png](./test-figure.png)
+</pre></div>
+</div>
+<p><img alt="test-figure.png" src="../../_images/test-figure.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
@@ -605,6 +609,7 @@
 <span class="sd">the *vert_exag* parameter is the true vertical exaggeration.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cbook</span>
 <span class="kn">from</span> <span class="nn">matplotlib.cbook</span> <span class="kn">import</span> <span class="n">get_sample_data</span>
 <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LightSource</span>
 
@@ -659,15 +664,6 @@
 <span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sh</span>
-
-<span class="c1"># rm test*png</span>
 </pre></div>
 </div>
 </div>

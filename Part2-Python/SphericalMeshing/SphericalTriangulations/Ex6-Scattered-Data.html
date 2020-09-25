@@ -828,6 +828,15 @@
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lavavu</span>
 
+<span class="kn">from</span> <span class="nn">xvfbwrapper</span> <span class="kn">import</span> <span class="n">Xvfb</span>
+<span class="n">vdisplay</span> <span class="o">=</span> <span class="n">Xvfb</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">vdisplay</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">xvfb</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">xvfb</span> <span class="o">=</span> <span class="kc">False</span>
+
 
 <span class="n">depth_range</span> <span class="o">=</span> <span class="n">depths</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 
@@ -880,6 +889,7 @@
 
 
 <span class="n">lv</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">vdisplay</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

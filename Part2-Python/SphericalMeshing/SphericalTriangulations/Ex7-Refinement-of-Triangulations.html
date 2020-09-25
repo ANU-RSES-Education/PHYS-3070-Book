@@ -810,6 +810,15 @@
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lavavu</span>
 
+<span class="kn">from</span> <span class="nn">xvfbwrapper</span> <span class="kn">import</span> <span class="n">Xvfb</span>
+<span class="n">vdisplay</span> <span class="o">=</span> <span class="n">Xvfb</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">vdisplay</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">xvfb</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">xvfb</span> <span class="o">=</span> <span class="kc">False</span>
+
 <span class="c1">## The four different triangulation strategies</span>
 
 <span class="n">t1</span> <span class="o">=</span> <span class="n">edge_triangulations</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -878,6 +887,8 @@
 <span class="n">lv</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="s2">&quot;hide triangles; show t3s; show t3w; redraw&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;CBV&quot;</span><span class="p">)</span>
 <span class="n">lv</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="s2">&quot;hide triangles; show t4s; show t4w; redraw&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;CBT&quot;</span><span class="p">)</span>
 <span class="n">lv</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">vdisplay</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -969,7 +980,6 @@
 <span class="n">equant</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">size_ratio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;CBT&quot;</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">simplices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">equant</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">equant</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">size_ratio</span><span class="p">)</span>
-
 
 
 </pre></div>
