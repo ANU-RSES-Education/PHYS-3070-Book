@@ -575,18 +575,38 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!ls ../../Mapping/
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Background image</span>
 
+<span class="kn">import</span> <span class="nn">xarray</span>
+<span class="kn">import</span> <span class="nn">h5netcdf</span>
 
-<span class="n">globaletopo</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;../../../Data/Resources/ETOPO1_Ice_c_geotiff.tif&quot;</span><span class="p">)</span>
-<span class="n">globaletopo_img</span>   <span class="o">=</span> <span class="n">globaletopo</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()[::</span><span class="mi">30</span><span class="p">,::</span><span class="mi">30</span><span class="p">]</span>
-<span class="k">del</span> <span class="n">globaletopo</span>
+<span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">top</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+<span class="n">map_extent</span> <span class="o">=</span> <span class="p">(</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">top</span><span class="p">)</span>
+
+<span class="n">etopo_dataset</span> <span class="o">=</span> <span class="s2">&quot;http://thredds.socib.es/thredds/dodsC/ancillary_data/bathymetry/ETOPO1_Bed_g_gmt4.nc&quot;</span>
+<span class="n">etopo_data</span> <span class="o">=</span> <span class="n">xarray</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">etopo_dataset</span><span class="p">)</span>
+<span class="n">regional_data</span> <span class="o">=</span> <span class="n">etopo_data</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">left</span><span class="p">,</span><span class="n">right</span><span class="p">,</span><span class="mi">30</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">bottom</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span><span class="mi">30</span><span class="p">))</span>
+
+<span class="n">lons</span> <span class="o">=</span> <span class="n">regional_data</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">lats</span> <span class="o">=</span> <span class="n">regional_data</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">vals</span> <span class="o">=</span> <span class="n">regional_data</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
+
+<span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">lons</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">lats</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">globaletopo_img</span> <span class="o">=</span> <span class="n">vals</span><span class="o">.</span><span class="n">data</span>
+
 
 <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LightSource</span><span class="p">,</span> <span class="n">Normalize</span>
 
 <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys</span>
 <span class="n">ls</span> <span class="o">=</span> <span class="n">LightSource</span><span class="p">(</span><span class="mi">315</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
-<span class="n">hillshade</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">shade</span><span class="p">(</span><span class="n">globaletopo_img</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">vert_exag</span><span class="o">=</span><span class="mf">0.0005</span><span class="p">)[::,::]</span>
+<span class="n">hillshade</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">shade</span><span class="p">(</span><span class="n">globaletopo_img</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">vert_exag</span><span class="o">=</span><span class="mf">0.0005</span><span class="p">)[</span><span class="mi">1</span><span class="p">::,</span><span class="mi">1</span><span class="p">::]</span>
 
 <span class="c1">## Drop one point here because the data are 361 x 721 !!</span>
 </pre></div>
@@ -694,7 +714,7 @@
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_global</span><span class="p">()</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">crust_color_image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">base_projection</span><span class="p">,</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">crust_color_image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">base_projection</span><span class="p">,</span>
           <span class="n">extent</span><span class="o">=</span><span class="n">global_extent</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 
