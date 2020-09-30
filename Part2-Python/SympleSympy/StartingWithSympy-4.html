@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Using sympy for ODEs &#8212; Geodynamics with Underworld</title>
+    <title>The biharmonic equation for Stokes flow &#8212; Geodynamics with Underworld</title>
     
   <link rel="stylesheet" href="../../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
 
@@ -279,11 +279,11 @@
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
-            href="../../_sources/Part2-Python/SympleSympy/StartingWithSympy-2.ipynb"><button type="button"
+            href="../../_sources/Part2-Python/SympleSympy/StartingWithSympy-4.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/Part2-Python/SympleSympy/StartingWithSympy-2.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/Part2-Python/SympleSympy/StartingWithSympy-4.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -321,7 +321,7 @@
     <div class="dropdown-buttons">
         
         
-        <a class="jupyterhub-button" href="https://phys3070.rses.geoscience.education/hub/user-redirect/git-pull?repo=https://github.com/ANU-RSES-Education/PHYS-3070-Book&urlpath=tree/PHYS-3070-Book/Part2-Python/SympleSympy/StartingWithSympy-2.md&branch=2020"><button type="button"
+        <a class="jupyterhub-button" href="https://phys3070.rses.geoscience.education/hub/user-redirect/git-pull?repo=https://github.com/ANU-RSES-Education/PHYS-3070-Book&urlpath=tree/PHYS-3070-Book/Part2-Python/SympleSympy/StartingWithSympy-4.md&branch=2020"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../../_static/images/logo_jupyterhub.svg"
@@ -342,39 +342,9 @@
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Using
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     sympy
-    </span>
-   </code>
-   for ODEs
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#symbolic-approach">
-     Symbolic approach
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#use-of-the-sympy-equation-module-eq">
-   Use of the
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     sympy
-    </span>
-   </code>
-   equation module (
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Eq
-    </span>
-   </code>
-   )
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#symbolic-approach">
+   Symbolic approach
   </a>
  </li>
 </ul>
@@ -388,22 +358,17 @@
         
               <div>
                 
-  <div class="section" id="using-sympy-for-odes">
-<h1>Using <code class="docutils literal notranslate"><span class="pre">sympy</span></code> for ODEs<a class="headerlink" href="#using-sympy-for-odes" title="Permalink to this headline">¶</a></h1>
-<p>We can use the capacity in <code class="docutils literal notranslate"><span class="pre">sympy</span></code> to differentiate symbolic expressions for simple verification of solutions of an ODE or PDE.
-For ODEs, there is an extensive set of documentation that deals with finding sets of solutions:
-https://docs.sympy.org/latest/modules/solvers/ode.html#ode-docs.</p>
-<p>Often, however, we are verifying a solution we know or suspect to have a certain form and we simply
-need <code class="docutils literal notranslate"><span class="pre">sympy</span></code> to make sure there are no mistakes.</p>
-<p>Let’s begin with a simple harmonic oscillator:</p>
+  <div class="section" id="the-biharmonic-equation-for-stokes-flow">
+<h1>The biharmonic equation for Stokes flow<a class="headerlink" href="#the-biharmonic-equation-for-stokes-flow" title="Permalink to this headline">¶</a></h1>
 <div class="math notranslate nohighlight">
-\[
-    \frac{d^2 \theta}{d t^2} = -k \theta 
-\]</div>
-<p>which we expect to have solutions like</p>
+\[\nabla^4 \psi = -{\rm Ra} \frac{\partial T}{\partial x_1}\]</div>
 <div class="math notranslate nohighlight">
-\[ \theta = A \cos(\omega t + \phi) \]</div>
-<p>Can we verify these solutions using symbolic manipulation ?</p>
+\[\nabla^4 \equiv \nabla^2 ( \nabla ^2) \equiv 
+                    \left( \frac{\partial ^4}{\partial x_1^4} + 
+                    \frac{\partial ^2}{\partial x_1^2} \frac{\partial ^2}{\partial x_2^2} +
+                    \frac{\partial ^4}{\partial x_2^4} \right)\]</div>
+<p>Solutions take the form:</p>
+<p><span class="math notranslate nohighlight">\( \psi_0 = \sin 2πx \cosh 2πy \)</span> and  <span class="math notranslate nohighlight">\(\psi_1 = y \sin 2πx  \cosh 2πy\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span>
@@ -418,137 +383,82 @@ need <code class="docutils literal notranslate"><span class="pre">sympy</span></
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy.core.symbol</span> <span class="kn">import</span> <span class="n">Symbol</span>
+<span class="kn">from</span> <span class="nn">sympy.core.function</span> <span class="kn">import</span> <span class="n">Function</span>
 
-<span class="n">t</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+<span class="n">x</span>       <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">y</span>       <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">k</span>       <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">omega</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;omega&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">phi</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;phi&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">sympy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="n">phi</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Let’s now check to see whether this form of theta is an eigenfunction of the ODE</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">theta</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[\displaystyle - \omega^{2}\]</div>
-</div>
-</div>
-<p>So, yes, this satisfies the equation subject to additional information needed to determine
-<span class="math notranslate nohighlight">\(\phi\)</span>. The value of <span class="math notranslate nohighlight">\(\omega\)</span> is <span class="math notranslate nohighlight">\(\sqrt{k}\)</span>.</p>
-</div>
-</div>
-<div class="section" id="use-of-the-sympy-equation-module-eq">
-<h1>Use of the <code class="docutils literal notranslate"><span class="pre">sympy</span></code> equation module (<code class="docutils literal notranslate"><span class="pre">Eq</span></code>)<a class="headerlink" href="#use-of-the-sympy-equation-module-eq" title="Permalink to this headline">¶</a></h1>
-<p>If we tell sympy that we have an equation, there are tools we can use to solve it</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Theta</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="s2">&quot;Theta&quot;</span><span class="p">)</span>
+<span class="n">A</span>       <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+<span class="n">B</span>       <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+<span class="n">C</span>       <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+<span class="n">D</span>       <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
 
-<span class="n">eq</span><span class="o">=</span><span class="n">sympy</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">Theta</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">omega</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">Theta</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">eq</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[\displaystyle \omega^{2} \Theta{\left(t \right)} + \frac{d^{2}}{d t^{2}} \Theta{\left(t \right)} = 0\]</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span><span class="o">=</span><span class="n">sympy</span><span class="o">.</span><span class="n">dsolve</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span><span class="n">Theta</span><span class="p">(</span><span class="n">t</span><span class="p">))</span><span class="o">.</span><span class="n">rhs</span>
-<span class="n">display</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">)</span>
-<span class="n">c1</span><span class="p">,</span><span class="n">c2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">list</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">display</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[\displaystyle C_{1} \sin{\left(\omega t \right)} + C_{2} \cos{\left(\omega t \right)}\]</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{C1, C2, omega, t}
-</pre></div>
-</div>
-<div class="output text_latex math notranslate nohighlight">
-\[\displaystyle \omega\]</div>
-<div class="output text_latex math notranslate nohighlight">
-\[\displaystyle C_{2}\]</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">myform</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">sympy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="n">phi</span><span class="p">)</span>
-<span class="n">myform</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[\displaystyle A \cos{\left(\omega t + \phi \right)}\]</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sympy</span><span class="o">.</span><span class="n">expand_trig</span><span class="p">(</span><span class="n">myform</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[\displaystyle A \left(- \sin{\left(\phi \right)} \sin{\left(\omega t \right)} + \cos{\left(\phi \right)} \cos{\left(\omega t \right)}\right)\]</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">their_form</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">subs</span><span class="p">([(</span><span class="n">c1</span><span class="p">,</span> <span class="o">-</span><span class="n">A</span> <span class="o">*</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)),</span> <span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="n">A</span> <span class="o">*</span> <span class="n">sympy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">))])</span>
-<span class="n">their_form</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[\displaystyle A \cos{\left(\phi \right)} \cos{\left(A t \sin{\left(\phi \right)} \right)} - C_{1} \sin{\left(A t \sin{\left(\phi \right)} \right)}\]</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">myform</span> <span class="o">-</span> <span class="n">their_form</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[\displaystyle - A \cos{\left(\phi \right)} \cos{\left(A t \sin{\left(\phi \right)} \right)} + A \cos{\left(\omega t + \phi \right)} + C_{1} \sin{\left(A t \sin{\left(\phi \right)} \right)}\]</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check to see if they are (exactly) equivalent</span>
+<span class="n">Ra</span>      <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;Ra&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">psi</span>     <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;psi&#39;</span><span class="p">)</span>
+<span class="n">T</span>       <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
 
-<span class="n">myform</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">their_form</span><span class="p">)</span>
+<span class="c1"># Potential solution</span>
+
+<span class="n">PSI1</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">sympy</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">B</span> <span class="o">*</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">y</span><span class="p">)</span> 
+<span class="n">PSI1</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle A \sin{\left(k x \right)} \cosh{\left(k y \right)} + B \sin{\left(k x \right)} \sinh{\left(k y \right)}\]</div>
+</div>
+</div>
+<p>Define the biharmonic operator and the biharmonic equation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">BH</span> <span class="o">=</span> <span class="n">psi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="n">psi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="n">y</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="n">psi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> 
+<span class="n">eq1</span><span class="o">=</span><span class="n">sympy</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">BH</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">eq2</span><span class="o">=</span><span class="n">sympy</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">BH</span><span class="p">,</span> <span class="n">Ra</span><span class="o">*</span><span class="n">T</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+</div>
+<p>Substitute the potential solution and verify that it is an eigenfunction of <span class="math notranslate nohighlight">\(\nabla^4\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">BH1</span> <span class="o">=</span> <span class="n">BH</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">psi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">PSI1</span><span class="p">)</span>
+<span class="c1"># This is too complicated to simplify in this form ... (try it !)</span>
+<span class="c1"># BH1.simplify()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">BH2</span> <span class="o">=</span> <span class="n">BH1</span><span class="o">.</span><span class="n">doit</span><span class="p">()</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+<span class="p">(</span><span class="n">BH2</span> <span class="o">/</span> <span class="n">PSI1</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle k^{4}\]</div>
+</div>
+</div>
+<p>There is another pair of solutions, <span class="math notranslate nohighlight">\(y * \psi_0\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PSI2</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="n">PSI1</span>
+
+<span class="n">BH1</span> <span class="o">=</span> <span class="n">BH</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">psi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">PSI2</span><span class="p">)</span><span class="o">.</span><span class="n">doit</span><span class="p">()</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+<span class="n">BH2</span> <span class="o">=</span> <span class="n">BH1</span><span class="o">.</span><span class="n">doit</span><span class="p">()</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+<span class="p">(</span><span class="n">BH2</span> <span class="o">/</span> <span class="n">PSI2</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{k^{3} \left(2 A \sinh{\left(k y \right)} + 2 B \cosh{\left(k y \right)} + k y \left(A \cosh{\left(k y \right)} + B \sinh{\left(k y \right)}\right)\right)}{y \left(A \cosh{\left(k y \right)} + B \sinh{\left(k y \right)}\right)}\]</div>
+</div>
+</div>
+<p>These don’t quite satisfy the equation on their own but it is possible to combine the four potential solutions to find a complete eigenfunction</p>
 </div>
 </div>
 
