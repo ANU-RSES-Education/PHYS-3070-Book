@@ -416,7 +416,10 @@
                     \frac{\partial ^2}{\partial x_1^2} \frac{\partial ^2}{\partial x_2^2} +
                     \frac{\partial ^4}{\partial x_2^4} \right)\]</div>
 <p>Solutions take the form:</p>
-<p><span class="math notranslate nohighlight">\( \psi_0 = \sin 2πx \cosh 2πy \)</span> and  <span class="math notranslate nohighlight">\(\psi_1 = y \sin 2πx  \cosh 2πy\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \psi_0 = a \sin k x \cosh k y + b \sin k x \sinh k y \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \psi_1 = c y \sin k x \cosh k y + d y \sin k x \sinh k y\)</span></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span>
@@ -507,6 +510,34 @@
 </div>
 </div>
 <p>These don’t quite satisfy the equation on their own but it is possible to combine the four potential solutions to find a complete eigenfunction</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PSI</span> <span class="o">=</span> <span class="n">PSI1</span> <span class="o">+</span> <span class="n">C</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">sympy</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">D</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">y</span><span class="p">)</span> 
+<span class="n">PSI0</span> <span class="o">=</span> <span class="n">PSI</span><span class="o">.</span><span class="n">factor</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">y</span><span class="p">))</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">y</span><span class="p">))</span>
+<span class="n">PSI0</span> <span class="o">/</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \left(A + C y\right) \cosh{\left(k y \right)} + \left(B + D y\right) \sinh{\left(k y \right)}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">BH1</span> <span class="o">=</span> <span class="n">BH</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">psi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">PSI</span><span class="p">)</span><span class="o">.</span><span class="n">doit</span><span class="p">()</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+<span class="n">BH2</span> <span class="o">=</span> <span class="n">BH1</span><span class="o">.</span><span class="n">doit</span><span class="p">()</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+<span class="n">BH3</span> <span class="o">=</span> <span class="n">BH2</span><span class="o">.</span><span class="n">factor</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">y</span><span class="p">))</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">y</span><span class="p">))</span>
+<span class="n">BH3</span> <span class="o">/</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle k^{3} \left(\left(A k + C k y + 2 D\right) \cosh{\left(k y \right)} + \left(B k + 2 C + D k y\right) \sinh{\left(k y \right)}\right)\]</div>
+</div>
+</div>
+<p>It is quite difficult to convince sympy to go a lot further automatically, but this should be sufficient to see that <span class="math notranslate nohighlight">\(\psi\)</span> is an eigen function for appropriate choice of <span class="math notranslate nohighlight">\(k\)</span></p>
 </div>
 </div>
 
