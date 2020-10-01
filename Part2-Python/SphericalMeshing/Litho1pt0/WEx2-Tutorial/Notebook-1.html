@@ -5,47 +5,47 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cartesian Meshes &#8212; Geodynamics with Underworld</title>
+    <title>A quick look at the depth-age relationship for the seafloor. &#8212; Geodynamics with Underworld</title>
     
-  <link rel="stylesheet" href="../../../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+  <link rel="stylesheet" href="../../../../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
 
     
   <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     
       
   <link rel="stylesheet"
-    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+    href="../../../../_static/vendor/open-sans_all/1.44.1/index.css">
   <link rel="stylesheet"
-    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+    href="../../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" href="../../../../_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.30270b6e4c972e43c488.js">
+  <link rel="preload" as="script" href="../../../../_static/js/index.30270b6e4c972e43c488.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/language_data.js"></script>
-    <script src="../../../_static/togglebutton.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script src="../../../../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
@@ -54,11 +54,11 @@
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Example 1 - Triangulation of arbitrary points" href="Ex1-Cartesian-Triangulations.html" />
-    <link rel="prev" title="Triangulations" href="../0-Stripy.html" />
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="A quick look at the depth-age relationship for the seafloor." href="Notebook-2.html" />
+    <link rel="prev" title="Age of the oceans / depth of the oceans" href="../WorkEx2-OceanDepthAge.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -75,9 +75,9 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../../index.html">
+<a class="navbar-brand text-wrap" href="../../../../index.html">
   
-  <img src="../../../_static/MundusSubterraneus.png" class="logo" alt="logo">
+  <img src="../../../../_static/MundusSubterraneus.png" class="logo" alt="logo">
   
   
   <h1 class="site-logo" id="site-title">Geodynamics with Underworld</h1>
@@ -85,7 +85,7 @@
 </a>
 </div>
 
-<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+<form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
@@ -93,7 +93,7 @@
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../FrontPage.html">
+  <a class="reference internal" href="../../../../FrontPage.html">
    Geodynamics with Underworld
   </a>
  </li>
@@ -105,7 +105,7 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../Part0-Introduction/Introduction.html">
+  <a class="reference internal" href="../../../../Part0-Introduction/Introduction.html">
    Introduction
   </a>
  </li>
@@ -117,32 +117,32 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../Part1-FluidDynamics/0-StartHere.html">
+  <a class="reference internal" href="../../../../Part1-FluidDynamics/0-StartHere.html">
    Content
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../Part1-FluidDynamics/ContinuumMechanics.html">
+  <a class="reference internal" href="../../../../Part1-FluidDynamics/ContinuumMechanics.html">
    Conservation Laws
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../Part1-FluidDynamics/NavierStokes.html">
+  <a class="reference internal" href="../../../../Part1-FluidDynamics/NavierStokes.html">
    Navier-Stokes Equation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../Part1-FluidDynamics/MantleDynamics.html">
+  <a class="reference internal" href="../../../../Part1-FluidDynamics/MantleDynamics.html">
    Non-dimensional equations &amp; dimensionless numbers
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../Part1-FluidDynamics/ThermalConvection.html">
+  <a class="reference internal" href="../../../../Part1-FluidDynamics/ThermalConvection.html">
    Thermal Convection
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../Part1-FluidDynamics/LithosphericDynamics.html">
+  <a class="reference internal" href="../../../../Part1-FluidDynamics/LithosphericDynamics.html">
    Dynamics of the Lithosphere
   </a>
  </li>
@@ -154,32 +154,32 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../Part3-NumericalMethods/0-StartHere.html">
+  <a class="reference internal" href="../../../../Part3-NumericalMethods/0-StartHere.html">
    Content
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../Part3-NumericalMethods/NumericalMethods1.html">
+  <a class="reference internal" href="../../../../Part3-NumericalMethods/NumericalMethods1.html">
    Numerical Modeling in Solid Earth Dynamics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../Part3-NumericalMethods/NumericalMethods2.html">
+  <a class="reference internal" href="../../../../Part3-NumericalMethods/NumericalMethods2.html">
    Survey of numerical methods
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../Part3-NumericalMethods/NumericalMethods3.html">
+  <a class="reference internal" href="../../../../Part3-NumericalMethods/NumericalMethods3.html">
    Introduction to the Finite Element Method
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../Part3-NumericalMethods/NumericalMethods4.html">
+  <a class="reference internal" href="../../../../Part3-NumericalMethods/NumericalMethods4.html">
    Practical Finite Elements
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../Part3-NumericalMethods/NumericalMethods5.html">
+  <a class="reference internal" href="../../../../Part3-NumericalMethods/NumericalMethods5.html">
    Methods for Solving Numerical Problems
   </a>
  </li>
@@ -191,47 +191,47 @@
 </p>
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../0-StartHere.html">
+  <a class="reference internal" href="../../../0-StartHere.html">
    Content
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../Introduction2Python/1-IntroductionToJupyterNotebooks.html">
+  <a class="reference internal" href="../../../Introduction2Python/1-IntroductionToJupyterNotebooks.html">
    Jupyter Notebooks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../NumpyAndScipy/0-NumpyAndScipy.html">
+  <a class="reference internal" href="../../../NumpyAndScipy/0-NumpyAndScipy.html">
    Numpy and Scipy
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../Plotting/1-IntroductionToMatplotlib.html">
+  <a class="reference internal" href="../../../Plotting/1-IntroductionToMatplotlib.html">
    Introduction to matplotlib
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../Mapping/0-Maps_with_Cartopy.html">
+  <a class="reference internal" href="../../../Mapping/0-Maps_with_Cartopy.html">
    Maps with the Cartopy Package
   </a>
  </li>
  <li class="toctree-l1 current active">
-  <a class="reference internal" href="../0-Stripy.html">
+  <a class="reference internal" href="../../0-Stripy.html">
    Triangulations
   </a>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../CartesianTriangulations/0-Cartesian.html">
      Cartesian Meshes
     </a>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="Ex1-Cartesian-Triangulations.html">
+      <a class="reference internal" href="../../CartesianTriangulations/Ex1-Cartesian-Triangulations.html">
        Example 1 - Triangulation of arbitrary points
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="Ex2-CartesianGrids.html">
+      <a class="reference internal" href="../../CartesianTriangulations/Ex2-CartesianGrids.html">
        Example 2 -
        <code class="docutils literal notranslate">
         <span class="pre">
@@ -242,7 +242,7 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="Ex3-Interpolation.html">
+      <a class="reference internal" href="../../CartesianTriangulations/Ex3-Interpolation.html">
        Example 3 -
        <code class="docutils literal notranslate">
         <span class="pre">
@@ -253,7 +253,7 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="Ex4-Gradients.html">
+      <a class="reference internal" href="../../CartesianTriangulations/Ex4-Gradients.html">
        Example 4 -
        <code class="docutils literal notranslate">
         <span class="pre">
@@ -264,7 +264,7 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="Ex5-Smoothing.html">
+      <a class="reference internal" href="../../CartesianTriangulations/Ex5-Smoothing.html">
        Example 5 -
        <code class="docutils literal notranslate">
         <span class="pre">
@@ -275,39 +275,39 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="Ex6-Scattered-Data.html">
+      <a class="reference internal" href="../../CartesianTriangulations/Ex6-Scattered-Data.html">
        Example 6 - Scattered Data and ‘Heat Maps’
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="Ex7-Refinement-of-Triangulations.html">
+      <a class="reference internal" href="../../CartesianTriangulations/Ex7-Refinement-of-Triangulations.html">
        Example 7 - Refining a triangulation
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="Ex8-Spline-Tension.html">
+      <a class="reference internal" href="../../CartesianTriangulations/Ex8-Spline-Tension.html">
        Example 8 - Spline Tension
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="Ex9-Voronoi-Diagram.html">
+      <a class="reference internal" href="../../CartesianTriangulations/Ex9-Voronoi-Diagram.html">
        Example 9 - Constructing the Voronoi diagram
       </a>
      </li>
     </ul>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../SphericalTriangulations/0-Spherical.html">
+   <li class="toctree-l2 current active">
+    <a class="reference internal" href="../../SphericalTriangulations/0-Spherical.html">
      Spherical Meshes
     </a>
-    <ul>
+    <ul class="current">
      <li class="toctree-l3">
-      <a class="reference internal" href="../SphericalTriangulations/Ex1-Spherical-Triangulations.html">
+      <a class="reference internal" href="../../SphericalTriangulations/Ex1-Spherical-Triangulations.html">
        Example 1 - Triangulation of arbitrary points on the sphere
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../SphericalTriangulations/Ex2-SphericalGrids.html">
+      <a class="reference internal" href="../../SphericalTriangulations/Ex2-SphericalGrids.html">
        Example 2 -
        <code class="docutils literal notranslate">
         <span class="pre">
@@ -318,7 +318,7 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../SphericalTriangulations/Ex3-Interpolation.html">
+      <a class="reference internal" href="../../SphericalTriangulations/Ex3-Interpolation.html">
        Example 3 -
        <code class="docutils literal notranslate">
         <span class="pre">
@@ -329,7 +329,7 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../SphericalTriangulations/Ex4-Gradients.html">
+      <a class="reference internal" href="../../SphericalTriangulations/Ex4-Gradients.html">
        Example 4 -
        <code class="docutils literal notranslate">
         <span class="pre">
@@ -340,7 +340,7 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../SphericalTriangulations/Ex5-Smoothing.html">
+      <a class="reference internal" href="../../SphericalTriangulations/Ex5-Smoothing.html">
        Example 5 -
        <code class="docutils literal notranslate">
         <span class="pre">
@@ -351,72 +351,72 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../SphericalTriangulations/Ex6-Scattered-Data.html">
+      <a class="reference internal" href="../../SphericalTriangulations/Ex6-Scattered-Data.html">
        Example 6 - Scattered Data and ‘Heat Maps’
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../SphericalTriangulations/Ex7-Refinement-of-Triangulations.html">
+      <a class="reference internal" href="../../SphericalTriangulations/Ex7-Refinement-of-Triangulations.html">
        Example 7 - Refining a triangulation
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../SphericalTriangulations/Ex8-Spline-Tension.html">
+      <a class="reference internal" href="../../SphericalTriangulations/Ex8-Spline-Tension.html">
        Example 8 - Spline Tension
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../SphericalTriangulations/Ex9-Voronoi-Diagram.html">
+      <a class="reference internal" href="../../SphericalTriangulations/Ex9-Voronoi-Diagram.html">
        Example 9 - Constructing the Voronoi diagram
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../Litho1pt0/Ex1-Litho1Layers.html">
+      <a class="reference internal" href="../Ex1-Litho1Layers.html">
        Introduction to the stripy wrapper for litho 1.0
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../Litho1pt0/Ex2-Litho1Properties.html">
+      <a class="reference internal" href="../Ex2-Litho1Properties.html">
        Litho 1.0 global sampling
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../Litho1pt0/Ex3-CrustalRegionalisation.html">
+      <a class="reference internal" href="../Ex3-CrustalRegionalisation.html">
        Crust 1.0 data
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../Litho1pt0/WorkEx1-CratonAverageProperties.html">
+      <a class="reference internal" href="../WorkEx1-CratonAverageProperties.html">
        Properties of the cratons
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../Litho1pt0/WorkEx2-OceanDepthAge.html">
+      <a class="reference internal" href="../WorkEx2-OceanDepthAge.html">
        Age of the oceans / depth of the oceans
       </a>
      </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Litho1pt0/WEx2-Tutorial/Notebook-1.html">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
        A quick look at the depth-age relationship for the seafloor.
       </a>
       <ul>
        <li class="toctree-l4">
-        <a class="reference internal" href="../Litho1pt0/WEx2-Tutorial/Notebook-2.html">
+        <a class="reference internal" href="Notebook-2.html">
          A quick look at the depth-age relationship for the seafloor.
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="../Litho1pt0/WEx2-Tutorial/Notebook-3.html">
+        <a class="reference internal" href="Notebook-3.html">
          A quick look at the depth-age relationship for the seafloor.
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="../Litho1pt0/WEx2-Tutorial/Notebook-4.html">
+        <a class="reference internal" href="Notebook-4.html">
          A quick look at the depth-age relationship for the seafloor.
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="../Litho1pt0/WEx2-Tutorial/Notebook-5.html">
+        <a class="reference internal" href="Notebook-5.html">
          A quick look at the depth-age relationship for the seafloor.
         </a>
        </li>
@@ -427,7 +427,7 @@
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../SympleSympy/StartingWithSympy.html">
+  <a class="reference internal" href="../../../SympleSympy/StartingWithSympy.html">
    Getting started with
    <code class="docutils literal notranslate">
     <span class="pre">
@@ -437,12 +437,12 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../SympleSympy/StartingWithSympy.html#differentiation-integration">
+  <a class="reference internal" href="../../../SympleSympy/StartingWithSympy.html#differentiation-integration">
    Differentiation / Integration
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../SolveMathProblems/0-IntroductionToNumericalSolutions.html">
+  <a class="reference internal" href="../../../SolveMathProblems/0-IntroductionToNumericalSolutions.html">
    Numerical models
   </a>
  </li>
@@ -487,11 +487,11 @@
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
-            href="../../../_sources/Part2-Python/SphericalMeshing/CartesianTriangulations/0-Cartesian.ipynb"><button type="button"
+            href="../../../../_sources/Part2-Python/SphericalMeshing/Litho1pt0/WEx2-Tutorial/Notebook-1.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/Part2-Python/SphericalMeshing/CartesianTriangulations/0-Cartesian.md"><button type="button"
+        <a class="dropdown-buttons" href="../../../../_sources/Part2-Python/SphericalMeshing/Litho1pt0/WEx2-Tutorial/Notebook-1.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -529,10 +529,10 @@
     <div class="dropdown-buttons">
         
         
-        <a class="jupyterhub-button" href="https://phys3070.rses.geoscience.education/hub/user-redirect/git-pull?repo=https://github.com/ANU-RSES-Education/PHYS-3070-Book&urlpath=tree/PHYS-3070-Book/Part2-Python/SphericalMeshing/CartesianTriangulations/0-Cartesian.md&branch=2020"><button type="button"
+        <a class="jupyterhub-button" href="https://phys3070.rses.geoscience.education/hub/user-redirect/git-pull?repo=https://github.com/ANU-RSES-Education/PHYS-3070-Book&urlpath=tree/PHYS-3070-Book/Part2-Python/SphericalMeshing/Litho1pt0/WEx2-Tutorial/Notebook-1.md&branch=2020"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
-                    src="../../../_static/images/logo_jupyterhub.svg"
+                    src="../../../../_static/images/logo_jupyterhub.svg"
                     alt="Interact on JupyterHub">JupyterHub</button></a>
         
         
@@ -545,6 +545,52 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#required-background">
+   Required background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-1">
+   Step 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-2">
+   Step 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-3">
+   Step 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-4">
+   Step 4
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#references">
+     References
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spoiler">
+   Spoiler
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -552,20 +598,40 @@
         
               <div>
                 
-  <div class="section" id="cartesian-meshes">
-<h1>Cartesian Meshes<a class="headerlink" href="#cartesian-meshes" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p><a class="reference internal" href="Ex1-Cartesian-Triangulations.html"><span class="doc std std-doc">Ex1-Cartesian-Triangulations</span></a></p></li>
-<li><p><a class="reference internal" href="Ex2-CartesianGrids.html"><span class="doc std std-doc">Ex2-CartesianGrids.md</span></a></p></li>
-<li><p><a class="reference internal" href="Ex3-Interpolation.html"><span class="doc std std-doc">Ex3-Interpolation.md</span></a></p></li>
-<li><p><a class="reference internal" href="Ex4-Gradients.html"><span class="doc std std-doc">Ex4-Gradients.md</span></a></p></li>
-<li><p><a class="reference internal" href="Ex5-Smoothing.html"><span class="doc std std-doc">Ex5-Smoothing.md</span></a></p></li>
-<li><p><a class="reference internal" href="Ex6-Scattered-Data.html"><span class="doc std std-doc">Ex6-Scattered-Data.md</span></a></p></li>
-<li><p><a class="reference internal" href="Ex7-Refinement-of-Triangulations.html"><span class="doc std std-doc">Ex7-Refinement-of-Triangulations.md</span></a></p></li>
-<li><p><a class="reference internal" href="Ex8-Spline-Tension.html"><span class="doc std std-doc">Ex8-Spline-Tension.md</span></a></p></li>
-<li><p><a class="reference internal" href="Ex9-Voronoi-Diagram.html"><span class="doc std std-doc">Ex9-Voronoi-Diagram.md</span></a></p></li>
-</ul>
-<div class="toctree-wrapper compound">
+  <div class="section" id="a-quick-look-at-the-depth-age-relationship-for-the-seafloor">
+<h1>A quick look at the depth-age relationship for the seafloor.<a class="headerlink" href="#a-quick-look-at-the-depth-age-relationship-for-the-seafloor" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="required-background">
+<h2>Required background<a class="headerlink" href="#required-background" title="Permalink to this headline">¶</a></h2>
+<p>In this tutorial we assume some passing familiarity making maps with the <code class="docutils literal notranslate"><span class="pre">cartopy</span></code> package and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> within the jupyter notebook environment. We will work though how to download and manipulate the data that we need to use, but we will also need to check that we have downloaded the correct data, that we are reading it correctly and that is is not corrupted. For that there is no better check than plotting a map and taking a good look at the results.</p>
+</div>
+<div class="section" id="step-1">
+<h2>Step 1<a class="headerlink" href="#step-1" title="Permalink to this headline">¶</a></h2>
+<p>Download topography / bathymetry data and plot a map.</p>
+</div>
+<div class="section" id="step-2">
+<h2>Step 2<a class="headerlink" href="#step-2" title="Permalink to this headline">¶</a></h2>
+<p>We need the age data for the oceans and we need to check how it is formatted.</p>
+</div>
+<div class="section" id="step-3">
+<h2>Step 3<a class="headerlink" href="#step-3" title="Permalink to this headline">¶</a></h2>
+<p>Next we need to try to get the depth and the age into the same grid resolution.
+We also need to think about whether this grid is suitable for the analysis we are going to do.</p>
+</div>
+<div class="section" id="step-4">
+<h2>Step 4<a class="headerlink" href="#step-4" title="Permalink to this headline">¶</a></h2>
+<p>Finally we put all this together to obtain a single scatter plot !</p>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<p>Turcotte, Donald Lawson, and Gerald Schubert. Geodynamics. 2nd ed. Cambridge ; New York: Cambridge University Press, 2002.</p>
+</div>
+</div>
+<div class="section" id="spoiler">
+<h2>Spoiler<a class="headerlink" href="#spoiler" title="Permalink to this headline">¶</a></h2>
+<p>This is what we are aiming for:</p>
+<div>
+<img src="Images/MyTargetPlot.png", width=40%>
+</div><div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
@@ -582,7 +648,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./Part2-Python/SphericalMeshing/CartesianTriangulations"
+            path: "./Part2-Python/SphericalMeshing/Litho1pt0/WEx2-Tutorial"
         },
         predefinedOutput: true
     }
@@ -597,8 +663,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../0-Stripy.html" title="previous page">Triangulations</a>
-    <a class='right-next' id="next-link" href="Ex1-Cartesian-Triangulations.html" title="next page">Example 1 - Triangulation of arbitrary points</a>
+    <a class='left-prev' id="prev-link" href="../WorkEx2-OceanDepthAge.html" title="previous page">Age of the oceans / depth of the oceans</a>
+    <a class='right-next' id="next-link" href="Notebook-2.html" title="next page">A quick look at the depth-age relationship for the seafloor.</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
@@ -618,7 +684,7 @@
     </div>
 
     
-  <script src="../../../_static/js/index.30270b6e4c972e43c488.js"></script>
+  <script src="../../../../_static/js/index.30270b6e4c972e43c488.js"></script>
 
 
     
