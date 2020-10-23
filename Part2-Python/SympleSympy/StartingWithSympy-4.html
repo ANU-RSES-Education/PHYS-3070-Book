@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The biharmonic equation for Stokes flow &#8212; Geodynamics with Underworld</title>
     
-  <link rel="stylesheet" href="../../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
     
   <link rel="stylesheet"
@@ -25,7 +25,7 @@
     href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.30270b6e4c972e43c488.js">
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
 
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -358,7 +358,8 @@
 
         <!-- Full screen (wrap in <a> to have style consistency -->
         <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
@@ -413,7 +414,7 @@
 <div class="math notranslate nohighlight">
 \[\nabla^4 \equiv \nabla^2 ( \nabla ^2) \equiv 
                     \left( \frac{\partial ^4}{\partial x_1^4} + 
-                    \frac{\partial ^2}{\partial x_1^2} \frac{\partial ^2}{\partial x_2^2} +
+                    2 \frac{\partial ^2}{\partial x_1^2} \frac{\partial ^2}{\partial x_2^2} +
                     \frac{\partial ^4}{\partial x_2^4} \right)\]</div>
 <p>Solutions take the form:</p>
 <ul class="simple">
@@ -464,7 +465,7 @@
 <p>Define the biharmonic operator and the biharmonic equation</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">BH</span> <span class="o">=</span> <span class="n">psi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="n">psi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="n">y</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="n">psi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">BH</span> <span class="o">=</span> <span class="n">psi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">psi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="n">y</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="n">psi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> 
 <span class="n">eq1</span><span class="o">=</span><span class="n">sympy</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">BH</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">eq2</span><span class="o">=</span><span class="n">sympy</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">BH</span><span class="p">,</span> <span class="n">Ra</span><span class="o">*</span><span class="n">T</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
@@ -490,7 +491,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
-\[\displaystyle k^{4}\]</div>
+\[\displaystyle 0\]</div>
 </div>
 </div>
 <p>There is another pair of solutions, <span class="math notranslate nohighlight">\(y * \psi_0\)</span></p>
@@ -506,10 +507,9 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
-\[\displaystyle \frac{k^{3} \left(2 A \sinh{\left(k y \right)} + 2 B \cosh{\left(k y \right)} + k y \left(A \cosh{\left(k y \right)} + B \sinh{\left(k y \right)}\right)\right)}{y \left(A \cosh{\left(k y \right)} + B \sinh{\left(k y \right)}\right)}\]</div>
+\[\displaystyle 0\]</div>
 </div>
 </div>
-<p>These don’t quite satisfy the equation on their own but it is possible to combine the four potential solutions to find a complete eigenfunction</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PSI</span> <span class="o">=</span> <span class="n">PSI1</span> <span class="o">+</span> <span class="n">C</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">sympy</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">D</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">y</span><span class="p">)</span> 
@@ -534,10 +534,9 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
-\[\displaystyle k^{3} \left(\left(A k + C k y + 2 D\right) \cosh{\left(k y \right)} + \left(B k + 2 C + D k y\right) \sinh{\left(k y \right)}\right)\]</div>
+\[\displaystyle 0\]</div>
 </div>
 </div>
-<p>It is quite difficult to convince sympy to go a lot further automatically, but this should be sufficient to see that <span class="math notranslate nohighlight">\(\psi\)</span> is an eigen function for appropriate choice of <span class="math notranslate nohighlight">\(k\)</span></p>
 </div>
 </div>
 
@@ -590,7 +589,7 @@
     </div>
 
     
-  <script src="../../_static/js/index.30270b6e4c972e43c488.js"></script>
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
 
 
     
